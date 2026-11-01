@@ -1,0 +1,20 @@
+# Upstream checkout of splunk/attack_data; fetch per README.
+vendor/attack_data/
+# Large benchmark build (regenerate with --scale 250).
+data_s250/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+.workshop-venv/
+*.duckdb
+*.duckdb.wal
+.workshop/
+artifacts/
+# Generated CTF player downloads and private answer keys.
+ctf/dist/
+# Generated file-server releases (including restricted organizer material).
+dist/
+# Local Isaac tool state.
+.isaac/
