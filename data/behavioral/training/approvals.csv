@@ -1,0 +1,7 @@
+cloud_provider,account_uid,cluster_name,grant_actor,subject,role,start_time,end_time,ticket
+AWS,111122223333,workload-11,system:serviceaccount:ops:release-controller,arn:aws:sts::111122223333:assumed-role/developer/analyst816@example.com,cluster-admin,2026-10-15T00:55:00.000000Z,2026-10-15T01:10:00.000000Z,CHG-815-1
+GCP,acme-payments-prod,workload-11,system:serviceaccount:ops:release-controller,analyst816@example.com,cluster-admin,2026-10-15T01:02:00.000000Z,2026-10-15T01:17:00.000000Z,CHG-815-1
+Azure,00000000-1111-4222-8333-444444444444,workload-11,system:serviceaccount:ops:release-controller,analyst816@example.com,cluster-admin,2026-10-15T01:09:00.000000Z,2026-10-15T01:24:00.000000Z,CHG-815-1
+AWS,111122223333,workload-22,system:serviceaccount:ops:release-controller,arn:aws:sts::111122223333:assumed-role/developer/analyst827@example.com,cluster-admin,2026-10-15T11:55:00.000000Z,2026-10-15T11:59:00.000000Z,CHG-815-12
+GCP,acme-payments-prod,workload-22,system:serviceaccount:ops:release-controller,analyst827@example.com,cluster-admin,2026-10-15T12:02:00.000000Z,2026-10-15T12:06:00.000000Z,CHG-815-12
+Azure,00000000-1111-4222-8333-444444444444,workload-22,system:serviceaccount:ops:release-controller,analyst827@example.com,cluster-admin,2026-10-15T12:09:00.000000Z,2026-10-15T12:13:00.000000Z,CHG-815-12

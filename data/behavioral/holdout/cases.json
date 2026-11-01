@@ -1,0 +1,343 @@
+[
+  {
+    "case_id": "holdout-00",
+    "scenario": "compromise",
+    "cluster_name": "workload-70",
+    "alert_event_ids": [
+      "b4584f80-f749-f515-7376-58db81a70740",
+      "5c3f2bd8-325a-6ac6-d970-cbe5bfb2ebd9",
+      "8a30a407-d17c-06de-0d82-d0bf2fd12844"
+    ],
+    "evidence_ids": [
+      "b4584f80-f749-f515-7376-58db81a70740",
+      "0020c24e-32b3-d344-7d68-9792e049e4ac",
+      "5c3f2bd8-325a-6ac6-d970-cbe5bfb2ebd9",
+      "c2b52928-ce22-1c16-01b8-a00eef8135b6",
+      "8a30a407-d17c-06de-0d82-d0bf2fd12844",
+      "13d9c67e-3b5c-247c-c76a-20d6eb56e4e0"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-01",
+    "scenario": "approved_maintenance",
+    "cluster_name": "workload-71",
+    "alert_event_ids": [
+      "0bfe50ea-e09d-8403-0882-2b59a8566eb9",
+      "59a5265c-4569-2380-44d7-272dbe36a98d",
+      "9a30fa88-150e-5f9f-d81d-4988c2d3b043"
+    ],
+    "evidence_ids": [
+      "0bfe50ea-e09d-8403-0882-2b59a8566eb9",
+      "2639f963-34d7-451f-6c5b-6150725e49cc",
+      "59a5265c-4569-2380-44d7-272dbe36a98d",
+      "3c610523-3a20-38fe-e4b8-b76e738b0b59",
+      "9a30fa88-150e-5f9f-d81d-4988c2d3b043",
+      "a9d76191-916c-7650-6824-5c20b08333b0"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-02",
+    "scenario": "wrong_subject",
+    "cluster_name": "workload-72",
+    "alert_event_ids": [
+      "4c58aea8-0a6b-7758-2798-5c3e674ec250",
+      "a254b105-3999-aceb-73a4-3ba073416a8a",
+      "d89311ab-9144-d56c-906e-f45f59f2f9b8"
+    ],
+    "evidence_ids": [
+      "4c58aea8-0a6b-7758-2798-5c3e674ec250",
+      "a254b105-3999-aceb-73a4-3ba073416a8a",
+      "d89311ab-9144-d56c-906e-f45f59f2f9b8"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-03",
+    "scenario": "wrong_cluster",
+    "cluster_name": "workload-73",
+    "alert_event_ids": [
+      "44aa790c-5887-51cb-3ce8-b40ad594b0e2",
+      "29089e5f-ff1f-40cf-ed1e-02e6c5bf46c6",
+      "26b31c1b-0a80-5206-5ad8-e4a7b14fef6c"
+    ],
+    "evidence_ids": [
+      "44aa790c-5887-51cb-3ce8-b40ad594b0e2",
+      "29089e5f-ff1f-40cf-ed1e-02e6c5bf46c6",
+      "26b31c1b-0a80-5206-5ad8-e4a7b14fef6c"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-04",
+    "scenario": "reversed",
+    "cluster_name": "workload-74",
+    "alert_event_ids": [
+      "f2c549b7-84df-49b9-0353-919ef51dfb57",
+      "63d478c4-3dc6-e4a7-693a-52c1e4ecc02f",
+      "e4e21c34-1a46-b3b8-1ce7-988d6bcd0fb8"
+    ],
+    "evidence_ids": [
+      "f2c549b7-84df-49b9-0353-919ef51dfb57",
+      "63d478c4-3dc6-e4a7-693a-52c1e4ecc02f",
+      "e4e21c34-1a46-b3b8-1ce7-988d6bcd0fb8"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-05",
+    "scenario": "outside_window",
+    "cluster_name": "workload-75",
+    "alert_event_ids": [
+      "7a6553b0-8c4d-d3a3-2394-b44916fac25c",
+      "2ca66cfe-f1c2-0f74-10dc-cea6ee517224",
+      "ce324fd6-c94a-e2fc-a8e3-771843fb40c3"
+    ],
+    "evidence_ids": [
+      "7a6553b0-8c4d-d3a3-2394-b44916fac25c",
+      "2ca66cfe-f1c2-0f74-10dc-cea6ee517224",
+      "ce324fd6-c94a-e2fc-a8e3-771843fb40c3"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-06",
+    "scenario": "denied_grant",
+    "cluster_name": "workload-76",
+    "alert_event_ids": [
+      "4d102e5f-9e02-c5cc-3c8e-28801f68f0e2",
+      "ddf77f08-6508-7437-c48f-5e49e8b00784",
+      "a4960b02-238d-90ad-b34a-3e5539010828"
+    ],
+    "evidence_ids": [
+      "4d102e5f-9e02-c5cc-3c8e-28801f68f0e2",
+      "ddf77f08-6508-7437-c48f-5e49e8b00784",
+      "a4960b02-238d-90ad-b34a-3e5539010828"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-07",
+    "scenario": "duplicate_stage",
+    "cluster_name": "workload-77",
+    "alert_event_ids": [
+      "1eee87b9-85d4-252d-917b-585a201935f7",
+      "c3193c42-e1ce-af7f-6c45-94708954f86b",
+      "8612bb8a-e675-9984-e8c1-4ae16d14bfb6"
+    ],
+    "evidence_ids": [
+      "1eee87b9-85d4-252d-917b-585a201935f7",
+      "8ffe3adc-a192-6095-ce83-f63303012420",
+      "c3193c42-e1ce-af7f-6c45-94708954f86b",
+      "ac63e96f-8fa6-c800-8cff-7a8af133b730",
+      "8612bb8a-e675-9984-e8c1-4ae16d14bfb6",
+      "3e1da4ae-d6e1-3d1a-668f-4e9f6ce2bd59"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-08",
+    "scenario": "missing_reads",
+    "cluster_name": "workload-78",
+    "alert_event_ids": [
+      "b5084765-963c-f266-0149-49d9d9f9a89a",
+      "61f9c012-86bb-a325-6d75-bf0ae26ebfe6",
+      "6ffc62a9-531f-aab2-178b-ba1f8ab71a60"
+    ],
+    "evidence_ids": [
+      "b5084765-963c-f266-0149-49d9d9f9a89a",
+      "61f9c012-86bb-a325-6d75-bf0ae26ebfe6",
+      "6ffc62a9-531f-aab2-178b-ba1f8ab71a60"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-09",
+    "scenario": "unresolved_identity",
+    "cluster_name": "workload-79",
+    "alert_event_ids": [
+      "37346fb6-d766-74ab-e2da-b688e68e2c63",
+      "3e21c358-63ac-9883-8a2b-8db1348f6d0e",
+      "570fbce1-f5c7-26c1-3fe0-4dc025258f7a"
+    ],
+    "evidence_ids": [
+      "37346fb6-d766-74ab-e2da-b688e68e2c63",
+      "b5e29c78-74e7-5c62-10ab-a429fa8acf19",
+      "3e21c358-63ac-9883-8a2b-8db1348f6d0e",
+      "7faebbf4-2ea5-c21d-8d40-2223823a208f",
+      "570fbce1-f5c7-26c1-3fe0-4dc025258f7a",
+      "b6d500e8-5e3c-d9d7-6281-33c98c5f8b9f"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-10",
+    "scenario": "single_cloud",
+    "cluster_name": "workload-80",
+    "alert_event_ids": [
+      "5d836506-4206-bf10-047e-7b52c90d9b78"
+    ],
+    "evidence_ids": [
+      "5d836506-4206-bf10-047e-7b52c90d9b78",
+      "3201d918-b7a1-16f5-d4f6-2a7050f0a58e"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-11",
+    "scenario": "shared_nat",
+    "cluster_name": "workload-81",
+    "alert_event_ids": [
+      "9844ba00-9733-d491-7efa-087291360f8f",
+      "a6cc13a8-b02f-4ace-9782-39622c4dc966",
+      "a003a602-f670-a1d4-5f00-ba094d9a2d6d"
+    ],
+    "evidence_ids": [
+      "9844ba00-9733-d491-7efa-087291360f8f",
+      "a6cc13a8-b02f-4ace-9782-39622c4dc966",
+      "a003a602-f670-a1d4-5f00-ba094d9a2d6d"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-12",
+    "scenario": "expired_approval",
+    "cluster_name": "workload-82",
+    "alert_event_ids": [
+      "c0546886-fd09-a20f-af58-45ca064ec806",
+      "83cdc1f6-6183-f5fc-9eec-e7220395893c",
+      "0f0e05c1-713f-c2c2-71ca-25b64ce33b3b"
+    ],
+    "evidence_ids": [
+      "c0546886-fd09-a20f-af58-45ca064ec806",
+      "db9b0040-de33-f38b-7d8c-226da8b5031d",
+      "83cdc1f6-6183-f5fc-9eec-e7220395893c",
+      "3d89f295-897c-d89f-985d-be702c96abb8",
+      "0f0e05c1-713f-c2c2-71ca-25b64ce33b3b",
+      "0bd5dcec-f486-7c94-c7a6-65231c3a16f8"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-13",
+    "scenario": "second_subject",
+    "cluster_name": "workload-83",
+    "alert_event_ids": [
+      "7a81a70b-acd5-4c51-1d47-b231d1ceea96",
+      "8024a759-0b1a-289d-a3e3-f1161f26e218",
+      "d0739ff4-6a08-7594-3922-c71f881ef217"
+    ],
+    "evidence_ids": [
+      "7a81a70b-acd5-4c51-1d47-b231d1ceea96",
+      "79020074-3627-5db5-e4e0-d2dc2b11fcab",
+      "8024a759-0b1a-289d-a3e3-f1161f26e218",
+      "80f68701-6459-b926-7201-88fad2b4a2ea",
+      "d0739ff4-6a08-7594-3922-c71f881ef217",
+      "a9dbe7a7-0605-1e10-8524-f62371b2dca0"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-14",
+    "scenario": "missing_request",
+    "cluster_name": "workload-84",
+    "alert_event_ids": [
+      "8431037c-c99e-100c-9df1-0637fe8cf6fc",
+      "0545cf0a-acfb-0ea3-d725-453085b446dd",
+      "07631f5c-fa10-3459-6f52-81dc42bbf1e1"
+    ],
+    "evidence_ids": [
+      "8431037c-c99e-100c-9df1-0637fe8cf6fc",
+      "0545cf0a-acfb-0ea3-d725-453085b446dd",
+      "07631f5c-fa10-3459-6f52-81dc42bbf1e1"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-15",
+    "scenario": "boundary_inclusive",
+    "cluster_name": "workload-85",
+    "alert_event_ids": [
+      "b4bb089e-52f0-2c85-2dbb-9e99380ae30c",
+      "64fd8cef-f25d-0e66-b45c-0de1d3e23365",
+      "aec53419-41c7-73e1-569b-6813cabfb740"
+    ],
+    "evidence_ids": [
+      "b4bb089e-52f0-2c85-2dbb-9e99380ae30c",
+      "d2c8293b-b78f-7807-f5ac-9f08e51e1988",
+      "64fd8cef-f25d-0e66-b45c-0de1d3e23365",
+      "979df3a6-0d45-3327-3ec6-049cb501ed43",
+      "aec53419-41c7-73e1-569b-6813cabfb740",
+      "bb2bfe73-f693-c9f5-ca0b-5428198136ce"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-16",
+    "scenario": "boundary_exceeded",
+    "cluster_name": "workload-86",
+    "alert_event_ids": [
+      "1c1ec9c6-8bbf-29d3-ab2b-5603e293ba52",
+      "729ab767-31c8-e24d-b05a-9e39e1fdd313",
+      "9ab209c7-a9d1-a3cf-2810-14de3cd5d97c"
+    ],
+    "evidence_ids": [
+      "1c1ec9c6-8bbf-29d3-ab2b-5603e293ba52",
+      "729ab767-31c8-e24d-b05a-9e39e1fdd313",
+      "9ab209c7-a9d1-a3cf-2810-14de3cd5d97c"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-17",
+    "scenario": "namespaced_read",
+    "cluster_name": "workload-87",
+    "alert_event_ids": [
+      "62b6049a-5c93-967b-77dc-1fe4c13aaaf2",
+      "d4a9579b-463f-df76-ddeb-0d1dd078d222",
+      "3faaa07c-f0c8-9f76-c82f-2d67fd643c26"
+    ],
+    "evidence_ids": [
+      "62b6049a-5c93-967b-77dc-1fe4c13aaaf2",
+      "d4a9579b-463f-df76-ddeb-0d1dd078d222",
+      "3faaa07c-f0c8-9f76-c82f-2d67fd643c26"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "holdout-18",
+    "scenario": "other_account",
+    "cluster_name": "workload-88",
+    "alert_event_ids": [
+      "2a65ca02-a4ae-726d-9b2f-2139e256392c",
+      "a9fa36f7-9457-ac14-db33-15de0c96c463",
+      "08e1767a-2eb1-139a-f6d6-425e3807b519"
+    ],
+    "evidence_ids": [
+      "2a65ca02-a4ae-726d-9b2f-2139e256392c",
+      "a9fa36f7-9457-ac14-db33-15de0c96c463",
+      "08e1767a-2eb1-139a-f6d6-425e3807b519"
+    ],
+    "split": "holdout",
+    "description": "Controlled fixture; see scenario specification."
+  }
+]

@@ -1,0 +1,4 @@
+cloud_provider,account_uid,cluster_name,region,environment,data_classification,owner_team,node_cidr
+AWS,111122223333,payments-prod,us-west-2,prod,PCI,Payments Platform,10.0.0.0/16
+GCP,acme-payments-prod,payments-prod,us-central1,prod,PCI,Payments Platform,10.128.0.0/20
+Azure,00000000-1111-4222-8333-444444444444,payments-prod,westus2,prod,PCI,Payments Platform,10.224.0.0/16

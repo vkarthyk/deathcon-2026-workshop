@@ -1,0 +1,272 @@
+[
+  {
+    "case_id": "training-00",
+    "scenario": "compromise",
+    "cluster_name": "workload-10",
+    "alert_event_ids": [
+      "1bb4fa5e-247d-c111-4dfc-61862c25b05a",
+      "d986fa68-fc86-c703-77b5-400e7967fd4d",
+      "900b0850-bc0d-177c-fd13-76f4fd0974e6"
+    ],
+    "evidence_ids": [
+      "1bb4fa5e-247d-c111-4dfc-61862c25b05a",
+      "423ae0c2-5b10-89da-7b73-ab7072e552d0",
+      "d986fa68-fc86-c703-77b5-400e7967fd4d",
+      "ef78f069-2906-09e7-69e2-635c30d3a7cd",
+      "900b0850-bc0d-177c-fd13-76f4fd0974e6",
+      "72abe1c6-1171-1451-80c9-bdf99b6babfa"
+    ],
+    "split": "training",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "training-01",
+    "scenario": "approved_maintenance",
+    "cluster_name": "workload-11",
+    "alert_event_ids": [
+      "26568c76-e629-039f-f961-8910e49baf79",
+      "746c7261-b49e-04cc-8348-c9494b17e933",
+      "2d12463b-a00b-a596-8ce5-4d741e62d61d"
+    ],
+    "evidence_ids": [
+      "26568c76-e629-039f-f961-8910e49baf79",
+      "ebfd772e-f954-03e1-d5f1-85dea2053a2a",
+      "746c7261-b49e-04cc-8348-c9494b17e933",
+      "f9aee22f-65b7-6094-4b41-0b3da5467d2b",
+      "2d12463b-a00b-a596-8ce5-4d741e62d61d",
+      "6f945f9d-738c-30de-0fb8-c04a34f81c92"
+    ],
+    "split": "training",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "training-02",
+    "scenario": "wrong_subject",
+    "cluster_name": "workload-12",
+    "alert_event_ids": [
+      "426bc8c9-3786-9ee1-a6e0-cfe3ff04fc1f",
+      "15c2b446-191b-19fa-ec01-e903af3ef310",
+      "fa5d5377-cb7e-76a1-8b17-c06e2a9b8565"
+    ],
+    "evidence_ids": [
+      "426bc8c9-3786-9ee1-a6e0-cfe3ff04fc1f",
+      "15c2b446-191b-19fa-ec01-e903af3ef310",
+      "fa5d5377-cb7e-76a1-8b17-c06e2a9b8565"
+    ],
+    "split": "training",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "training-03",
+    "scenario": "wrong_cluster",
+    "cluster_name": "workload-13",
+    "alert_event_ids": [
+      "64533d9c-73f8-3d52-1b33-25e63f4e2421",
+      "5c726942-6f3c-000a-e962-ddf06cad276d",
+      "33850e33-97bd-3572-fb8f-39a3b3a1e4ab"
+    ],
+    "evidence_ids": [
+      "64533d9c-73f8-3d52-1b33-25e63f4e2421",
+      "5c726942-6f3c-000a-e962-ddf06cad276d",
+      "33850e33-97bd-3572-fb8f-39a3b3a1e4ab"
+    ],
+    "split": "training",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "training-04",
+    "scenario": "reversed",
+    "cluster_name": "workload-14",
+    "alert_event_ids": [
+      "01e2eafd-cb67-3a05-47bc-06c5d54b9de4",
+      "0b1dcba6-2ca2-73dd-fba6-edc17d0e2ceb",
+      "b64062b3-14e4-314a-3d30-8d83e4aa0da4"
+    ],
+    "evidence_ids": [
+      "01e2eafd-cb67-3a05-47bc-06c5d54b9de4",
+      "0b1dcba6-2ca2-73dd-fba6-edc17d0e2ceb",
+      "b64062b3-14e4-314a-3d30-8d83e4aa0da4"
+    ],
+    "split": "training",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "training-05",
+    "scenario": "outside_window",
+    "cluster_name": "workload-15",
+    "alert_event_ids": [
+      "3ee1cb00-41c9-3879-0992-196dcc8dbd9c",
+      "c6eee72f-b950-ca14-be44-3be711e7573f",
+      "1befd172-153c-b3bf-7ea7-3014e9fefae9"
+    ],
+    "evidence_ids": [
+      "3ee1cb00-41c9-3879-0992-196dcc8dbd9c",
+      "c6eee72f-b950-ca14-be44-3be711e7573f",
+      "1befd172-153c-b3bf-7ea7-3014e9fefae9"
+    ],
+    "split": "training",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "training-06",
+    "scenario": "denied_grant",
+    "cluster_name": "workload-16",
+    "alert_event_ids": [
+      "84100843-719e-9ee5-0e41-a597a8090ca3",
+      "01d033a5-a395-6a1e-a92b-b04c4c461610",
+      "dbab4ea2-6a66-169e-7264-9e614bae0ddc"
+    ],
+    "evidence_ids": [
+      "84100843-719e-9ee5-0e41-a597a8090ca3",
+      "01d033a5-a395-6a1e-a92b-b04c4c461610",
+      "dbab4ea2-6a66-169e-7264-9e614bae0ddc"
+    ],
+    "split": "training",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "training-07",
+    "scenario": "duplicate_stage",
+    "cluster_name": "workload-17",
+    "alert_event_ids": [
+      "3d48b9cf-68ea-cc73-256e-684949e1250b",
+      "01acac5a-dd8b-9ca2-19cd-85718fe4cdd6",
+      "ebc57f2c-9aa1-2e5d-7fd4-1c4589c91ef1"
+    ],
+    "evidence_ids": [
+      "3d48b9cf-68ea-cc73-256e-684949e1250b",
+      "3e2db26c-8b67-041c-fe74-d9799c650f34",
+      "01acac5a-dd8b-9ca2-19cd-85718fe4cdd6",
+      "9158f2d7-1a58-a8a4-4952-2e0288c9a816",
+      "ebc57f2c-9aa1-2e5d-7fd4-1c4589c91ef1",
+      "2adc7256-c288-4299-8e81-a53aa38d0415"
+    ],
+    "split": "training",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "training-08",
+    "scenario": "missing_reads",
+    "cluster_name": "workload-18",
+    "alert_event_ids": [
+      "6606d45e-b713-9337-2bf0-e7dfcfe967c2",
+      "037bbde8-ae05-fcef-2e39-0d4ad0df1ee1",
+      "dded0762-10a5-eac6-e019-b65fc10819bc"
+    ],
+    "evidence_ids": [
+      "6606d45e-b713-9337-2bf0-e7dfcfe967c2",
+      "037bbde8-ae05-fcef-2e39-0d4ad0df1ee1",
+      "dded0762-10a5-eac6-e019-b65fc10819bc"
+    ],
+    "split": "training",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "training-09",
+    "scenario": "unresolved_identity",
+    "cluster_name": "workload-19",
+    "alert_event_ids": [
+      "ab830123-7117-6ee8-1551-fe23ee098e2e",
+      "0363c5dd-abd9-9ce0-4711-c861ab1b2362",
+      "2e19d00e-1d3c-564f-db45-25d0782a92f6"
+    ],
+    "evidence_ids": [
+      "ab830123-7117-6ee8-1551-fe23ee098e2e",
+      "00f27f0e-8cdd-d12e-ed8b-fc04281f6790",
+      "0363c5dd-abd9-9ce0-4711-c861ab1b2362",
+      "978f21cf-4139-dd68-43d3-3917652bd9be",
+      "2e19d00e-1d3c-564f-db45-25d0782a92f6",
+      "7a62df33-0b18-3622-2af9-7ec1dee9cc81"
+    ],
+    "split": "training",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "training-10",
+    "scenario": "single_cloud",
+    "cluster_name": "workload-20",
+    "alert_event_ids": [
+      "179acfac-b8c7-bc2b-81e7-5b2aeeef7f09"
+    ],
+    "evidence_ids": [
+      "179acfac-b8c7-bc2b-81e7-5b2aeeef7f09",
+      "ac344fb7-ca52-a455-172a-6aac9447e73a"
+    ],
+    "split": "training",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "training-11",
+    "scenario": "shared_nat",
+    "cluster_name": "workload-21",
+    "alert_event_ids": [
+      "2dc2b203-92ae-5404-06ec-86cebf8f18da",
+      "03e6d644-8b3e-f851-2860-a881d2798fcb",
+      "bbb07786-162c-9957-70c3-212669f34ada"
+    ],
+    "evidence_ids": [
+      "2dc2b203-92ae-5404-06ec-86cebf8f18da",
+      "03e6d644-8b3e-f851-2860-a881d2798fcb",
+      "bbb07786-162c-9957-70c3-212669f34ada"
+    ],
+    "split": "training",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "training-12",
+    "scenario": "expired_approval",
+    "cluster_name": "workload-22",
+    "alert_event_ids": [
+      "85d5e434-375a-a2cd-5a4b-9718d6f82f11",
+      "f3e08a6b-6747-6eff-65c7-1911953be4b9",
+      "03cda281-399a-9637-85b1-cf397c8828ce"
+    ],
+    "evidence_ids": [
+      "85d5e434-375a-a2cd-5a4b-9718d6f82f11",
+      "96db7cc2-40cd-583e-1d72-20237fb99115",
+      "f3e08a6b-6747-6eff-65c7-1911953be4b9",
+      "acbe6329-1776-8fd2-06e2-0bacbedb0120",
+      "03cda281-399a-9637-85b1-cf397c8828ce",
+      "30401e60-cda8-8134-1b9b-59067ba6a642"
+    ],
+    "split": "training",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "training-13",
+    "scenario": "second_subject",
+    "cluster_name": "workload-23",
+    "alert_event_ids": [
+      "4b6f1302-dfda-15bf-8873-bfb91c6b5e21",
+      "075a78b9-682e-e2f1-fbd5-0cd65040e015",
+      "0da26190-dbe4-c19e-0001-fd4402f93bb6"
+    ],
+    "evidence_ids": [
+      "4b6f1302-dfda-15bf-8873-bfb91c6b5e21",
+      "ebf90a05-07b2-1e07-28fe-bf612a7268e3",
+      "075a78b9-682e-e2f1-fbd5-0cd65040e015",
+      "49c0ad99-f8c3-109f-e723-7ead945da83c",
+      "0da26190-dbe4-c19e-0001-fd4402f93bb6",
+      "e2548fa7-4361-78cb-5558-b5ca8642fa50"
+    ],
+    "split": "training",
+    "description": "Controlled fixture; see scenario specification."
+  },
+  {
+    "case_id": "training-14",
+    "scenario": "missing_request",
+    "cluster_name": "workload-24",
+    "alert_event_ids": [
+      "041bc70d-4bc3-d913-9f36-d1850b1cd29c",
+      "25a1803e-7682-14b4-5b40-7b9aa8f64829",
+      "795bb316-fc24-b07b-9df7-872a1f3e2ebe"
+    ],
+    "evidence_ids": [
+      "041bc70d-4bc3-d913-9f36-d1850b1cd29c",
+      "25a1803e-7682-14b4-5b40-7b9aa8f64829",
+      "795bb316-fc24-b07b-9df7-872a1f3e2ebe"
+    ],
+    "split": "training",
+    "description": "Controlled fixture; see scenario specification."
+  }
+]

@@ -1,0 +1,7 @@
+cloud_provider,namespace,owner_kind,owner_name,image_prefix,justification
+AWS,kube-system,DaemonSet,aws-node,602401143452.dkr.ecr.us-west-2.amazonaws.com/amazon-k8s-cni,Managed by cloud provider; privileged by design
+AWS,kube-system,DaemonSet,kube-proxy,602401143452.dkr.ecr.us-west-2.amazonaws.com/eks/kube-proxy,Managed by cloud provider; privileged by design
+GCP,kube-system,DaemonSet,netd,gke.gcr.io/netd,Managed by cloud provider; privileged by design
+GCP,kube-system,DaemonSet,pdcsi-node,gke.gcr.io/gcp-compute-persistent-disk-csi-driver,Managed by cloud provider; privileged by design
+Azure,kube-system,DaemonSet,azure-cns,mcr.microsoft.com/containernetworking/azure-cns,Managed by cloud provider; privileged by design
+Azure,kube-system,DaemonSet,kube-proxy,mcr.microsoft.com/oss/kubernetes/kube-proxy,Managed by cloud provider; privileged by design

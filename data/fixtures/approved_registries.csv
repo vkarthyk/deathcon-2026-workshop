@@ -1,0 +1,6 @@
+registry_prefix,description
+602401143452.dkr.ecr.,Amazon EKS add-on images
+gke.gcr.io/,GKE system images
+mcr.microsoft.com/,Microsoft Container Registry
+docker.io/library/,Docker official images
+ghcr.io/acme/,Acme internal images

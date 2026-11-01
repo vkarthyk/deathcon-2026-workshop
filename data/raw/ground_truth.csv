@@ -1,0 +1,43 @@
+auditID,cloud,step,mitre_technique,description
+84a69aea-86ab-c725-80db-2a2063c2cec0,eks,1,T1069,Leaked jdoe creds used from new IP: kubectl auth can-i --list
+d2a8df51-a9f7-c463-8e2f-68a5298bd283,eks,2,T1613,Enumerate namespaces
+7c840941-7f77-1d18-bedb-ddcec6e8625b,eks,3,T1552.007,Forbidden: list secrets in kube-system
+613f131c-4b8e-a98d-71f8-720b2d5576ce,eks,3,T1610,Forbidden: create job in kube-system
+2b7768d1-9b8f-449b-a307-0adb8499f61f,eks,4,T1552.007,List secrets in payments
+287c9a5d-0a71-4c7f-89de-669ca08a0d15,eks,4,T1552.007,Read payments-db-credentials
+eb10010d-31bd-aa46-d198-d0e3315575fd,eks,5,T1611,Create privileged hostPID/hostNetwork pod with / hostPath
+d891d1bd-4f83-4abb-5aa7-34d40f93a150,eks,6,T1609,kubectl exec nsenter into host PID 1
+a499f4da-97c0-205b-f3ac-a8a68c5bf4d6,eks,7,T1528,Stolen argocd SA token used from outside the cluster
+0ba32758-91d5-4f85-f45f-7b1c54ebc279,eks,8,T1098.006,Bind jdoe to cluster-admin
+fe0c4328-1b4e-1ef5-f96e-bad70fc0510b,eks,9,T1543.005,Persistence: DaemonSet on every node from attacker registry
+e72241cb-de1c-476a-5bbc-b9a7cb62158f,eks,9,T1053.007,Persistence: CronJob in kube-system
+e98036f6-9f6e-0f4a-de6c-e67286f04a3a,eks,10,T1133,Expose NodePort for C2
+80c484c2-a579-c3c2-154a-3c725f8c2558,eks,11,T1552.007,Dump secrets across all namespaces (now succeeds)
+d2dd3b69-776f-8007-faea-751f34b4906e,gke,1,T1069,Leaked jdoe creds used from new IP: kubectl auth can-i --list
+a6af2f69-d148-63e5-67cb-7392af42507f,gke,2,T1613,Enumerate namespaces
+ca630dde-5852-3dab-901e-7ef46df88baa,gke,3,T1552.007,Forbidden: list secrets in kube-system
+3d8278ba-859a-03f8-9376-3f66589e396f,gke,3,T1610,Forbidden: create job in kube-system
+2eefc020-bd89-0544-e310-b82b4f764b1b,gke,4,T1552.007,List secrets in payments
+f7a24cf0-8aa3-ae33-7005-48e6bec6d9bc,gke,4,T1552.007,Read payments-db-credentials
+0197deb3-ba32-08cd-dff9-39858d4b804a,gke,5,T1611,Create privileged hostPID/hostNetwork pod with / hostPath
+76bf9298-c611-c8c8-e8a8-e5b7c8b8133d,gke,6,T1609,kubectl exec nsenter into host PID 1
+64bb76bf-83a4-ca21-ccc6-fad9520fe863,gke,7,T1528,Stolen argocd SA token used from outside the cluster
+ab32609d-e8df-2aab-9f38-259ead815f12,gke,8,T1098.006,Bind jdoe to cluster-admin
+12c702cd-1a5f-4f22-0723-be4091f5bd06,gke,9,T1543.005,Persistence: DaemonSet on every node from attacker registry
+7aa42ed3-d794-da7d-da55-0535bc5d77f8,gke,9,T1053.007,Persistence: CronJob in kube-system
+b74bb2cc-4539-df60-14e4-1e3b5e6f6038,gke,10,T1133,Expose NodePort for C2
+31c262cd-457b-a995-1b14-1dff9b8f7f1c,gke,11,T1552.007,Dump secrets across all namespaces (now succeeds)
+0d40bb41-c68a-65d7-aec2-e98d09cafba0,aks,1,T1069,Leaked jdoe creds used from new IP: kubectl auth can-i --list
+de9e2135-5e0e-6c12-33de-5cbaa85d8432,aks,2,T1613,Enumerate namespaces
+a40f4a79-66df-d058-f73c-0c5fe4f3e75f,aks,3,T1552.007,Forbidden: list secrets in kube-system
+f623f1d8-ca29-e80b-03bf-13344aff9d67,aks,3,T1610,Forbidden: create job in kube-system
+eefbb910-20d3-ca46-aeb1-e992ba2246c8,aks,4,T1552.007,List secrets in payments
+d8e76def-ae9f-007a-b149-9879543c7abd,aks,4,T1552.007,Read payments-db-credentials
+a14174ad-fc92-6340-24f6-4732217d5eea,aks,5,T1611,Create privileged hostPID/hostNetwork pod with / hostPath
+f52592f5-9f29-cd09-3a42-fabe1936192d,aks,6,T1609,kubectl exec nsenter into host PID 1
+b98e53ee-b584-8356-2676-ac673789dcaa,aks,7,T1528,Stolen argocd SA token used from outside the cluster
+8aa49e18-4e10-da91-9eff-fd9154187c95,aks,8,T1098.006,Bind jdoe to cluster-admin
+f8499c73-41d4-e87d-fa92-c3cf6038fe57,aks,9,T1543.005,Persistence: DaemonSet on every node from attacker registry
+98b377dc-7092-3e88-fe82-0c4183b27397,aks,9,T1053.007,Persistence: CronJob in kube-system
+eabded8f-f70d-e0d6-d599-8cb49321f916,aks,10,T1133,Expose NodePort for C2
+64fa652d-a48d-7f0a-02b1-10b4d52290f4,aks,11,T1552.007,Dump secrets across all namespaces (now succeeds)

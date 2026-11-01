@@ -1,0 +1,17 @@
+{
+ "scale": 25,
+ "events": {
+  "eks": {
+   "attack": 14,
+   "benign": 182431
+  },
+  "gke": {
+   "attack": 14,
+   "benign": 182338
+  },
+  "aks": {
+   "attack": 14,
+   "benign": 182635
+  }
+ }
+}
