@@ -1,0 +1,6 @@
+duckdb==2.0.0
+pandas
+pytest
+nbformat
+nbclient
+ipykernel

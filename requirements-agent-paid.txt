@@ -1,0 +1,2 @@
+# Optional paid Anthropic provider, including the historical agent/run.py harness.
+anthropic>=1

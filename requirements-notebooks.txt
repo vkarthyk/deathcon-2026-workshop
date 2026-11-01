@@ -1,0 +1,9 @@
+# Browser tutorials only; no model/API credentials required.
+duckdb==2.0.0
+pandas
+itables>=2,<3
+jupyterlab>=4,<5
+ipykernel
+nbformat
+nbclient
+pytest
