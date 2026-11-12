@@ -26,11 +26,11 @@ The builder uses an explicit file allowlist. It regenerates the six notebooks fr
 
 The student edition contains the supplied behavioral rule from notebook 03 by design; that lesson asks students to read, run and modify the supplied sequence. Its raw-detection and normalization TODOs remain incomplete. Facilitator answer notebooks resolve those TODOs in the restricted ZIP.
 
-The extra notebook `notebooks/05_Run_the_detection_in_batches.ipynb` includes
-a flawed SQL pipeline and synthetic practice schedule under `labs/scheduled_detection/`. Its reference pipeline, independent evaluator and scenario generator
-are included only in the restricted facilitator overlay. The replay runtime works
+The extra notebook `notebooks/05_Detect_service_account_deviations.ipynb` includes
+a flawed detection SQL file, synthetic AWS, GCP and Azure logs and an action catalog under `labs/service_account_baseline/`. Its reference answer, independent evaluator and scenario generator
+are included only in the restricted facilitator overlay. The lab runtime works
 with the native DuckDB CLI or the workshop's Python engine. The builder freshly
-generates its notebook and practice schedule, preserving local notebook edits.
+generates its notebook and practice logs, preserving local notebook edits.
 
 Both `setup.sh` and the native Windows `setup.ps1` launcher are included, together
 with the Windows setup guide. The PowerShell launcher does not require WSL or a

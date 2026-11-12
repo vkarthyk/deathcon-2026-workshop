@@ -75,10 +75,10 @@ Follow notebook 04 for the remaining steps. No model is started automatically.
 
 ## CTF practice
 
-For a harder 60–90 minute extension after notebooks 03–04, open
-`notebooks/05_Run_the_detection_in_batches.ipynb` in the workshop JupyterLab session. Follow its README
-to repair a scheduled detection under late logs, duplicate deliveries, scheduler
-crashes and collector outages. The extension is included in the student workshop ZIP.
+For a 60-minute extension after notebooks 01–04, open
+`notebooks/05_Detect_service_account_deviations.ipynb` in the workshop JupyterLab session. Follow its guide
+to map three clouds' control-plane logs and detect service accounts doing something
+new. The extension is included in the student workshop ZIP.
 
 Extract each CTF ZIP into its own directory, read its `README.md`, and open `Start.ipynb`. The workshop's Python environment can open them without reinstalling dependencies. After the workshop setup has installed Jupyter, launch it from the workshop folder in a new terminal with:
 

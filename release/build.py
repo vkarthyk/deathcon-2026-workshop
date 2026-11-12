@@ -20,7 +20,7 @@ from ctf.organizer.build import build as build_ctf
 ROOT = Path(__file__).resolve().parents[1]
 WORKSHOP_MODULES = ('__init__.py', 'agent_comparison.py', 'behavioral.py', 'binding_probes.py',
                     'db.py', 'engine.py', 'exercises.py', 'jupyter.py', 'launch.py',
-                    'normalization.py', 'notebooks.py', 'scheduled_detection.py', 'ui.py', 'enterprise.sql')
+                    'normalization.py', 'notebooks.py', 'service_account_baseline.py', 'ui.py', 'enterprise.sql')
 
 
 def copy_file(source, destination):
@@ -73,10 +73,10 @@ def student_tree(folder):
         copy_file(ROOT / 'detection' / name, folder / 'detection' / name)
     for path in (ROOT / 'docs').glob('*.md'):
         copy_file(path, folder / 'docs' / path.name)
-    for name in ('HINTS.md', 'pipeline.sql'):
-        copy_file(ROOT / 'labs/scheduled_detection' / name, folder / 'labs/scheduled_detection' / name)
-    copy_file(ROOT / 'notebooks/guides/05_Run_the_detection_in_batches.md',
-              folder / 'notebooks/guides/05_Run_the_detection_in_batches.md')
+    for name in ('HINTS.md', 'detection.sql'):
+        copy_file(ROOT / 'labs/service_account_baseline' / name, folder / 'labs/service_account_baseline' / name)
+    copy_file(ROOT / 'notebooks/guides/05_Detect_service_account_deviations.md',
+              folder / 'notebooks/guides/05_Detect_service_account_deviations.md')
     # Keep participant-guide CTF links valid, without bundling any organizer material.
     for challenge in ('easy', 'hard'):
         for name in ('README.md', 'HINTS.md'):
@@ -108,7 +108,7 @@ def facilitator_tree(student, folder):
                     if cell['cell_type'] == 'code':
                         cell.update(outputs=[], execution_count=None)
                 target.write_text(json.dumps(notebook, indent=1) + '\n')
-    copy_file(ROOT / 'datagen/make_scheduled_detection.py', folder / 'datagen/make_scheduled_detection.py')
+    copy_file(ROOT / 'datagen/make_service_account_baseline.py', folder / 'datagen/make_service_account_baseline.py')
     for source in (ROOT / 'detection/simple_cluster_admin').glob('*.sql'):
         copy_file(source, folder / 'detection/simple_cluster_admin' / source.name)
     for source in (student / 'notebooks').glob('*.ipynb'):

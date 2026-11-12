@@ -49,9 +49,10 @@ its setup. Other temporary SQL changes do not carry across notebooks.
 - An evidence-backed alert investigation with bounded tools.
 - A reviewable SQL rule, source evidence and documented limitations.
 
-Extra lab: [05 Run the detection in batches](notebooks/05_Run_the_detection_in_batches.ipynb)
-adds late logs, duplicate deliveries, restarts and collector outages after the core
-notebooks. Allow 60–90 minutes; see [the guide](notebooks/guides/05_Run_the_detection_in_batches.md).
+Extra lab: [05 Detect service account deviations](notebooks/05_Detect_service_account_deviations.ipynb)
+applies the same method beyond Kubernetes: map AWS CloudTrail, GCP Cloud Audit and
+Azure Activity logs to one contract, then flag what a service account has never done
+before. Allow about 60 minutes; see [the guide](notebooks/guides/05_Detect_service_account_deviations.md).
 
 ## CTF practice
 
