@@ -26,7 +26,7 @@ The builder uses an explicit file allowlist. It regenerates the six notebooks fr
 
 The student edition contains the supplied behavioral rule from notebook 03 by design; that lesson asks students to read, run and modify the supplied sequence. Its raw-detection and normalization TODOs remain incomplete. Facilitator answer notebooks resolve those TODOs in the restricted ZIP.
 
-The extra notebook `notebooks/05_Detect_service_account_deviations.ipynb` includes
+Notebook `notebooks/04_Detect_service_account_deviations.ipynb` includes
 a flawed detection SQL file, synthetic AWS, GCP and Azure logs and an action catalog under `labs/service_account_baseline/`. Its reference answer, independent evaluator and scenario generator
 are included only in the restricted facilitator overlay. The lab runtime works
 with the native DuckDB CLI or the workshop's Python engine. The builder freshly

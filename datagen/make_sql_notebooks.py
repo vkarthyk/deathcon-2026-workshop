@@ -65,7 +65,7 @@ ORDER BY e.time;""",
                                       'SELECT (SELECT count(*) FROM enterprise.event_cache) -\n'
                                       '       (SELECT count(*) FROM enterprise.k8s_ocsf) AS '
                                       'duplicate_rows_removed;'],
-     '04_Investigate_alerts': ['SELECT a.alert_key, a.provider, a.account_uid, a.cluster_name,\n'
+     '05_Investigate_alerts': ['SELECT a.alert_key, a.provider, a.account_uid, a.cluster_name,\n'
                                '       a.subject, a.grant_time, e.event_id, e.evidence_kind\n'
                                'FROM main.workshop_alerts a\n'
                                'JOIN main.alert_evidence e\n'
@@ -88,7 +88,7 @@ ORDER BY e.time;""",
     # Show the same simple detection in each raw source before the shared schema.
     result['01_Cloud_specific_detections'][3:3] = [
         raw_scaffold(name) for name in ('eks', 'gke', 'aks')]
-    result['04_Investigate_alerts'][1] = result['04_Investigate_alerts'][1].replace(
+    result['05_Investigate_alerts'][1] = result['05_Investigate_alerts'][1].replace(
         'WITH chosen AS (',
         '-- Select the earliest alert as a concrete investigation example.\n'
         '-- Its asset keys, actors and timestamps bound the source-event search below.\n'
@@ -111,7 +111,7 @@ EXPLANATIONS = {'00_Start_here': [('Explore the enterprise day',
                    ('Inspect the behavioral alerts',
                     'List sequence matches from the current participant rule (the reference rule unless you have saved edits).',
                     'Compare grant actors, granted subjects, grant times and first-read times. alert_key identifies the grant; individual evidence events are not selected here.',
-                    'Choose an alert_key, then query main.alert_evidence for its source event IDs or use notebook 04.')],
+                    'Choose an alert_key, then query main.alert_evidence for its source event IDs or use notebook 05.')],
  '01_Cloud_specific_detections': [('Inspect a native EKS record',
                                        'Preview the unwrapped Kubernetes audit JSON from the modeled '
                                        'CloudWatch envelope.',
@@ -159,7 +159,7 @@ EXPLANATIONS = {'00_Start_here': [('Explore the enterprise day',
                                    'Compare the cached source count with the deduplicated event view.',
                                    'Read duplicate_rows_removed: the cached row count minus the normalized event count. This aggregate does not show which event IDs or audit stages were removed.',
                                    'To inspect duplicates, group enterprise.event_cache by provider, account_uid, cluster_name and event_id and compare those keys with enterprise.k8s_ocsf.')],
- '04_Investigate_alerts': [('Select an alert from your rule',
+ '05_Investigate_alerts': [('Select an alert from your rule',
                             'List alerts produced by the current participant rule.',
                             'Each row links an alert and its asset/subject keys to a supporting event_id and evidence_kind. Multiple evidence rows can belong to one alert; event bodies are not selected here.',
                             'Choose an alert and retain its alert_key, provider, account_uid, cluster_name and subject. Add filters on these keys inside the next query’s chosen CTE to investigate it instead of the default earliest alert.'),
@@ -198,7 +198,7 @@ def main():
                            f"Your next step: {action}\n\n"
                            "Read this cell; run the SQL cell immediately below it.")
             native += ["\n".join("-- " + line if line else "--" for line in explanation.splitlines()), statement]
-        if name == '04_Investigate_alerts':
+        if name == '05_Investigate_alerts':
             native.append('\n'.join('-- ' + line if line else '--' for line in EVIDENCE_REVIEW.splitlines()))
         (output / f"{name}.sql").write_text("\n\n-- %%\n\n".join(native) + "\n")
         print(name)

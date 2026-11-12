@@ -43,7 +43,7 @@ proxy, Tor, hosting, cloud, geography and ASN fields do not independently change
 severity; the numeric score is available for investigation and policy experiments.
 This avoids counting the same IP threat twice through its flag and score.
 
-Explore the richer records in notebook 04:
+Explore the richer records in notebook 05:
 
 ```sql
 -- Inspect the network, geography and threat context supplied for each known IP.

@@ -64,8 +64,8 @@ function table(s,values,x,y,width,height,widths,fontSize=26){
 }
 // 3. Workshop outline.
 {
- const s=slide('Workshop outline','03–04 min',`Walk through the agenda quickly. Teaching sections are short. About 30 of the 45 minutes are hands-on in the notebooks. Everyone uses EKS as the common hands-on provider. GKE and AKS examples and completed mappings are supplied so nobody has to solve all three live.\n\nSet expectations: the data is synthetic and provider envelopes are modeled. The goal is to learn the method — map, validate, write one rule, investigate with evidence — not to deploy a production pipeline. Lab 05 (batch execution) and the CTFs are take-home.\n\nSources: WORKSHOP.md; README.md.`);
- table(s,[['Time','Section','What you do'],['00–06','Background','Why normalize; three log formats; the shared contract'],['06–13','Lab 1','Read raw EKS events (notebooks 00–01)'],['13–23','Lab 2','Normalize and write one shared rule (notebook 02)'],['23–33','Lab 3','Follow the recipient from grant to secret read (notebook 03)'],['33–38','Lab 4','Explain one alert with source evidence (notebook 04)'],['38–45','Debrief','What supports the detection; your next detection']],64,170,1152,440,[150,220,782],23);
+ const s=slide('Workshop outline','03–04 min',`Walk through the agenda quickly. Teaching sections are short. About 30 of the 45 minutes are hands-on in the notebooks. Everyone uses EKS as the common hands-on provider. GKE and AKS examples and completed mappings are supplied so nobody has to solve all three live.\n\nSet expectations: the data is synthetic and provider envelopes are modeled. The goal is to learn the method — map, validate, write one rule, apply it to new logs — not to deploy a production pipeline. Lab 4 starts in the room and finishes at home. Lab 5 (explain one alert with source evidence) and the CTFs are take-home.\n\nSources: WORKSHOP.md; README.md.`);
+ table(s,[['Time','Section','What you do'],['00–06','Background','Why normalize; three log formats; the shared contract'],['06–13','Lab 1','Read raw EKS events (notebooks 00–01)'],['13–23','Lab 2','Normalize and write one shared rule (notebook 02)'],['23–33','Lab 3','Follow the recipient from grant to secret read (notebook 03)'],['33–38','Lab 4','Start: detect service account deviations (notebook 04)'],['38–45','Debrief','What supports the detection; your next detection']],64,170,1152,440,[150,220,782],23);
 }
 // 4. Actual field paths, not invented provider equivalence claims.
 {
@@ -112,15 +112,15 @@ function table(s,values,x,y,width,height,widths,fontSize=26){
  text(s,'Try a smaller window, then restore 15 minutes.',64,438,1120,54,30,C.muted);
  text(s,'Checkpoint: Which events support one alert?',64,551,1120,65,33,C.amber,true);
 }
-// 10. Five-minute evidence exercise, no optional model setup.
+// 10. Lab 4 starts in the session and finishes as take-home work.
 {
- const s=slide('Lab 4: Explain one alert','33–38 min / notebook 04',`33–34: Open notebook 04, run setup and select an alert. 34–36: Retrieve its grant and read evidence with full scope. 36–38: Write a short assessment and discuss with a neighbor. Prioritize source evidence over running the checker. The scripted checker is a fixed Python tool sequence, not an LLM. Do not start Ollama, paid inference or the raw-versus-normalized model comparison in this 45-minute session.\n\nCHECKPOINT: An assessment identifies the recipient, full asset and ordered successful events. It separates observed behavior, benign explanations and missing evidence. Native identity remains usable when person attribution is absent. No secret contents or exfiltration claims without additional evidence. A missing read log limits negative conclusions.\n\nSources: notebooks/04_Investigate_alerts.ipynb; docs/agent-lab.md; detection/alert_evidence.sql.`);
- text(s,'Retrieve the grant and secret-list source events.',64,189,1120,82,37,C.cyan,true);
- text(s,'Observed behavior',64,301,450,50,31,C.fg,true);
- text(s,'Recipient, asset, outcome and event order',64,356,1120,54,29);
- text(s,'Assessment',64,449,450,48,31,C.fg,true);
- text(s,'One benign explanation and one remaining uncertainty',64,503,1120,74,29);
- text(s,'Keep the cited source event IDs with your explanation.',64,609,1120,32,23,C.muted);
+ const s=slide('Lab 4: Detect service account deviations','33–38 min / notebook 04',`33–34: Open notebook 04 and run setup. 34–36: Print one backup-agent record per cloud and compare where each puts the caller, account, source address, client and outcome. Point at the AWS worked example in labs/service_account_baseline/detection.sql. 36–38: Run the starter as-is and show its noisy, partly wrong deviations. Ask: which of these would you page someone for? Participants finish the GCP and Azure mappings and the seven rule fixes after the session, using the notebook's steps and collapsible hints.\n\nThis lab applies the same contract method to a new log source and a new detection class, following the article's service-account baseline example. Its deliberate blind spot is a stolen token used exactly like the baseline: a "never seen before" rule cannot see it. A deviation is a reason to investigate, not proof of compromise.\n\nSources: ${article}; notebooks/04_Detect_service_account_deviations.ipynb; labs/service_account_baseline/detection.sql.`);
+ text(s,'Same method, new logs: AWS, GCP and Azure control plane.',64,189,1120,82,37,C.cyan,true);
+ text(s,'Map each cloud to one contract',64,301,1120,50,31,C.fg,true);
+ text(s,'Then flag actions, networks and clients a service account has never used',64,356,1120,54,27);
+ text(s,'In the room: run the starter rule',64,449,1120,48,31,C.fg,true);
+ text(s,'Which of its alerts would you page someone for?',64,503,1120,74,29);
+ text(s,'Finish the mappings and rule fixes after the session.',64,609,1120,32,23,C.muted);
 }
 // 11. Debrief on semantics, not field-name normalization alone.
 {
@@ -130,11 +130,11 @@ function table(s,values,x,y,width,height,widths,fontSize=26){
 }
 // 12. Close without adding the optional lab to the 45-minute clock.
 {
- const s=slide('Your next detection','42–45 min',`42–43: Ask participants to name a detection they can migrate to a shared event contract. 43–44: Recap what they did: mapped one provider, compared supplied examples, ran and changed a shared binding rule, inspected a behavioral sequence, and investigated an alert. 44–45: Point to take-home exercises. Notebook 05_Detect_service_account_deviations.ipynb applies the same method beyond Kubernetes: participants map AWS CloudTrail, GCP Cloud Audit and Azure Activity logs to one contract, then flag actions, networks and clients a service account has never used before. It follows the article's service-account baseline example and is a separate 60-minute exercise. Point out its deliberate blind spot: a stolen token used exactly like the baseline. The easy and hard CTFs are optional, standalone practice. Notebook 04 also offers local AI investigation, requiring a separate optional model installation and evidence verification.\n\nThe workshop is synthetic and provider envelopes are modeled. Production adaptation requires validating real exports, source semantics, logging coverage, schema changes and scheduled execution. Do not promise universal semantic equivalence or production efficacy based on the exercise.\n\nReference reading: ${article}. Repository sources: README.md; WORKSHOP.md; notebooks/05_Detect_service_account_deviations.ipynb; ctf/README.md.`);
+ const s=slide('Your next detection','42–45 min',`42–43: Ask participants to name a detection they can migrate to a shared event contract. 43–44: Recap what they did: mapped one provider, compared supplied examples, ran and changed a shared binding rule, inspected a behavioral sequence, and started the service-account baseline lab. 44–45: Point to take-home work. Finish notebook 04 (about 60 minutes in total): the GCP and Azure mappings and the seven rule fixes, then the triage questions and the blind spot. Notebook 05_Investigate_alerts.ipynb is Lab 5: retrieve one alert's grant and secret-list source events and write a short evidence-backed assessment; it also offers optional local AI investigation, requiring a separate model installation and evidence verification. The easy and hard CTFs are optional, standalone practice.\n\nThe workshop is synthetic and provider envelopes are modeled. Production adaptation requires validating real exports, source semantics, logging coverage, schema changes and scheduled execution. Do not promise universal semantic equivalence or production efficacy based on the exercise.\n\nReference reading: ${article}. Repository sources: README.md; WORKSHOP.md; notebooks/04_Detect_service_account_deviations.ipynb; notebooks/05_Investigate_alerts.ipynb; ctf/README.md.`);
  text(s,'Which detection would you migrate first?',64,183,1120,91,40,C.cyan,true);
- text(s,'Take back the mapping contract, shared SQL rule\nand an investigation with source evidence.',64,306,1120,105,32);
- text(s,'Extra lab 05: Detect service account deviations',64,482,1120,58,30,C.fg,true);
- text(s,'One baseline rule across AWS, GCP and Azure control-plane logs\nCTFs and local AI investigation are optional follow-up work.',64,548,1120,80,25,C.muted);
+ text(s,'Take back the mapping contract, a shared SQL rule\nand a baseline rule that works across clouds.',64,306,1120,105,32);
+ text(s,'Take-home: finish Lab 4, then Lab 5',64,482,1120,58,30,C.fg,true);
+ text(s,'Lab 5: explain one alert with its source events\nCTFs and local AI investigation are optional follow-up work.',64,548,1120,80,25,C.muted);
 }
 
 await fs.writeFile(path.join(build,'presenter-notes.json'),JSON.stringify(notes,null,2));

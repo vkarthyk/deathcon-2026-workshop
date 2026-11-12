@@ -64,7 +64,7 @@ FROM enterprise.k8s_ocsf GROUP BY provider, operation, resource_type ORDER BY 1,
 --
 -- What to look for: Compare grant actors, granted subjects, grant times and first-read times. alert_key identifies the grant; individual evidence events are not selected here.
 --
--- Your next step: Choose an alert_key, then query main.alert_evidence for its source event IDs or use notebook 04.
+-- Your next step: Choose an alert_key, then query main.alert_evidence for its source event IDs or use notebook 05.
 --
 -- Read this cell; run the SQL cell immediately below it.
 

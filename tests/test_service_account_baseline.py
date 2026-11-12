@@ -12,7 +12,7 @@ from solutions.service_account_baseline.evaluate import evaluate
 from workshop.service_account_baseline import LAB, ROOT, Lab, load_raw
 
 REFERENCE = ROOT / 'solutions/service_account_baseline/detection.sql'
-NOTEBOOK = ROOT / 'notebooks/05_Detect_service_account_deviations.ipynb'
+NOTEBOOK = ROOT / 'notebooks/04_Detect_service_account_deviations.ipynb'
 RULE_MARKER = '-- 2. Observations'
 
 
@@ -129,7 +129,7 @@ from pathlib import Path
 import workshop.service_account_baseline
 assert Path(workshop.service_account_baseline.__file__).resolve().parent.parent == Path.cwd()
 namespace = {}
-notebook = json.loads(Path('notebooks/05_Detect_service_account_deviations.ipynb').read_text())
+notebook = json.loads(Path('notebooks/04_Detect_service_account_deviations.ipynb').read_text())
 for cell in notebook['cells']:
     if cell['cell_type'] == 'code':
         assert cell['outputs'] == [] and cell['execution_count'] is None

@@ -85,16 +85,17 @@ def main():
             add("markdown", note)
             option = '--save-rule' if save else ('--check-binding ' + RAW_HEADINGS[heading] if heading in RAW_HEADINGS else '--check-binding ' + NORMALIZED_HEADINGS[heading] if heading in NORMALIZED_HEADINGS else '')
             add("code", ("%%sql " + option).rstrip() + "\n" + statement)
-        if name == '04_Investigate_alerts':
+        if name == '05_Investigate_alerts':
             add('markdown', EVIDENCE_REVIEW)
         for heading, explanation, code in EXERCISES.get(name, []):
             add("markdown", f"## {heading}\n\n{explanation}")
             add("code", code)
         if index + 1 < len(names):
-            following = names[index + 1]
+            # Notebook 04 (service-account baseline) is generated separately and sits between 03 and 05.
+            following = '04_Detect_service_account_deviations' if name == '03_Write_the_behavioral_rule' else names[index + 1]
             add("markdown", f"Continue to [{following.replace('_', ' ')}]({following}.ipynb). Run its setup cell first; saved rule edits carry across notebooks.")
         else:
-            add("markdown", "You have completed the core notebook workflow. Continue with the optional extra lab [05 Detect service account deviations](05_Detect_service_account_deviations.ipynb), or review your artifacts and record the rule specification, source evidence and remaining uncertainty. See [the agent guide](../docs/agent-lab.md) for additional background.")
+            add("markdown", "You have completed the core notebook workflow. Review your artifacts and record the rule specification, source evidence and remaining uncertainty. See [the agent guide](../docs/agent-lab.md) for additional background.")
         document = dict(cells=cells, metadata={"kernelspec": {"display_name": "Python 3 (ipykernel)", "language": "python", "name": "python3"}, "language_info": {"name": "python", "version": "3.11"}}, nbformat=4, nbformat_minor=5)
         (ROOT / "notebooks" / f"{name}.ipynb").write_text(json.dumps(document, indent=1) + "\n")
         print(name)

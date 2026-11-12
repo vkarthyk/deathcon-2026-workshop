@@ -52,7 +52,7 @@ class ReleaseTests(unittest.TestCase):
                 self.assertNotIn('detection/simple_cluster_admin', name)
             notebooks = [name for name in names if name.endswith('.ipynb')]
             self.assertEqual(len(notebooks), 6)
-            self.assertIn('workshop-student/notebooks/05_Detect_service_account_deviations.ipynb', names)
+            self.assertIn('workshop-student/notebooks/04_Detect_service_account_deviations.ipynb', names)
             self.assertIn('workshop-student/workshop/service_account_baseline.py', names)
             self.assertNotIn('workshop-student/datagen/make_service_account_baseline.py', names)
             mapping_count = 0

@@ -60,7 +60,7 @@ ollama pull qwen3:8b
 ollama list
 ```
 
-Then follow notebook 04. No Linux installer or `zstd` is required for native Windows Ollama. A model on your host is not automatically the VM's localhost endpoint. The core workshop and CTFs do not need a model; a small Windows VM may have insufficient RAM or GPU access for the optional extension. Do not allocate all host memory to the VM.
+Then follow notebook 05. No Linux installer or `zstd` is required for native Windows Ollama. A model on your host is not automatically the VM's localhost endpoint. The core workshop and CTFs do not need a model; a small Windows VM may have insufficient RAM or GPU access for the optional extension. Do not allocate all host memory to the VM.
 
 ## Alternative: WSL2 on your Windows host
 
@@ -131,7 +131,7 @@ Choose one path; you do not need both copies. The repository edition also contai
 
 Copy the complete token-bearing URL printed by setup, usually starting with `http://localhost:8888/`, into Edge, Chrome or Firefox on Windows. A browser may not open automatically from WSL. Keep the Ubuntu terminal running.
 
-Open `notebooks/00_Start_here.ipynb`, run its setup cell and first SQL query, then follow notebooks 00–04. Choose the Python workshop kernel if asked. Do not share the Jupyter URL/token.
+Open `notebooks/00_Start_here.ipynb`, run its setup cell and first SQL query, then follow notebooks 00–05. Choose the Python workshop kernel if asked. Do not share the Jupyter URL/token.
 
 If the printed localhost URL cannot be reached, first verify setup is still running. Try a different port from the workshop folder:
 
@@ -167,7 +167,7 @@ ollama pull qwen3:8b
 ollama list
 ```
 
-Then follow notebook 04's opt-in instructions. Installing Ollama only on the Windows host may require additional WSL networking configuration; the notebook defaults to a local Linux endpoint. Recommend at least 16 GB total system RAM for this extension; Windows and WSL share resources. GPU support depends on compatible hardware and drivers, and CPU runs can be slow. Leave the model exercises disabled if resources are insufficient.
+Then follow notebook 05's opt-in instructions. Installing Ollama only on the Windows host may require additional WSL networking configuration; the notebook defaults to a local Linux endpoint. Recommend at least 16 GB total system RAM for this extension; Windows and WSL share resources. GPU support depends on compatible hardware and drivers, and CPU runs can be slow. Leave the model exercises disabled if resources are insufficient.
 
 ## 6. Open the standalone CTFs
 

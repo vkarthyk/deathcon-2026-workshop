@@ -42,4 +42,4 @@ Keep UUID hyphens. No spaces. Do not submit an actor, person ID or ticket ID. Re
 
 ## Stuck?
 
-Open HINTS.md progressively. Workshop connections: [02 Normalize the logs](https://github.com/ved-k_data/k8s-ocsf-workshop/blob/main/notebooks/02_Normalize_the_logs.ipynb), [03 Write the behavioral rule](https://github.com/ved-k_data/k8s-ocsf-workshop/blob/main/notebooks/03_Write_the_behavioral_rule.ipynb) and [04 Investigate alerts](https://github.com/ved-k_data/k8s-ocsf-workshop/blob/main/notebooks/04_Investigate_alerts.ipynb). The challenge is synthetic and contains deliberately similar sequences.
+Open HINTS.md progressively. Workshop connections: [02 Normalize the logs](https://github.com/ved-k_data/k8s-ocsf-workshop/blob/main/notebooks/02_Normalize_the_logs.ipynb), [03 Write the behavioral rule](https://github.com/ved-k_data/k8s-ocsf-workshop/blob/main/notebooks/03_Write_the_behavioral_rule.ipynb) and [05 Investigate alerts](https://github.com/ved-k_data/k8s-ocsf-workshop/blob/main/notebooks/05_Investigate_alerts.ipynb). The challenge is synthetic and contains deliberately similar sequences.

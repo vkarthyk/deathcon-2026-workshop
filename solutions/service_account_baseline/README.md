@@ -1,4 +1,4 @@
-# Facilitator guide: 05 Detect service account deviations
+# Facilitator guide: 04 Detect service account deviations
 
 `detection.sql` is the reference answer for `labs/service_account_baseline/detection.sql`.
 Keep it, the evaluator and the generator away from students.

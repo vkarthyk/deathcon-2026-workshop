@@ -49,7 +49,7 @@ its setup. Other temporary SQL changes do not carry across notebooks.
 - An evidence-backed alert investigation with bounded tools.
 - A reviewable SQL rule, source evidence and documented limitations.
 
-Extra lab: [05 Detect service account deviations](notebooks/05_Detect_service_account_deviations.ipynb)
+Lab 4: [04 Detect service account deviations](notebooks/04_Detect_service_account_deviations.ipynb)
 applies the same method beyond Kubernetes: map AWS CloudTrail, GCP Cloud Audit and
 Azure Activity logs to one contract, then flag what a service account has never done
 before. Allow about 60 minutes; the notebook contains the full brief, steps and hints.

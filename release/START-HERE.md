@@ -62,7 +62,7 @@ No Windows VM, domain join, Sysmon or Sentinel is needed for this workshop. Tail
 
 ## Optional local AI investigator
 
-Complete the core workshop without an LLM first. Notebook 04 includes Ollama installation and model-download steps, plus a raw-versus-normalized comparison you can run yourself. Allow extra time beyond the core hour.
+Complete the core workshop without an LLM first. Notebook 05 includes Ollama installation and model-download steps, plus a raw-versus-normalized comparison you can run yourself. Allow extra time beyond the core hour.
 
 Recommend 16 GB RAM or more and several GB of storage for `qwen3:8b`. A GPU helps; CPU runs may be slow. Ollama must run on the same machine as the Jupyter kernel. On Debian/Ubuntu, install the extraction prerequisite before installing Ollama:
 
@@ -71,12 +71,12 @@ sudo apt-get update
 sudo apt-get install -y zstd
 ```
 
-Follow notebook 04 for the remaining steps. No model is started automatically.
+Follow notebook 05 for the remaining steps. No model is started automatically.
 
 ## CTF practice
 
-For a 60-minute extension after notebooks 01–04, open
-`notebooks/05_Detect_service_account_deviations.ipynb` in the workshop JupyterLab session. Follow its steps
+For lab 4 (about 60 minutes, after notebooks 01–03), open
+`notebooks/04_Detect_service_account_deviations.ipynb` in the workshop JupyterLab session. Follow its steps
 to map three clouds' control-plane logs and detect service accounts doing something
 new. The extension is included in the student workshop ZIP.
 

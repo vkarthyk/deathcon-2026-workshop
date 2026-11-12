@@ -1,6 +1,6 @@
 # Investigate an alert with source evidence
 
-The participant workflow is in `notebooks/04_Investigate_alerts.ipynb`. Select an
+The participant workflow is in `notebooks/05_Investigate_alerts.ipynb`. Select an
 alert from `main.workshop_alerts`, inspect a bounded actor/subject timeline, and run the scripted
 evidence checker (no LLM calls), then verify its evidence and explain any uncertainty.
 
@@ -51,7 +51,7 @@ provider is used by these commands. Missing/invalid submissions remain incomplet
 
 ## Compare raw and normalized evidence yourself
 
-Notebook 04 includes a complete optional comparison after the Ollama instructions.
+Notebook 05 includes a complete optional comparison after the Ollama instructions.
 Set `RUN_SCHEMA_COMPARISON=True` to investigate the same grant twice with fresh
 conversations, identical SQL-only tools, prompt, model and turn limit. The raw run
 gets provider tables; the normalized run gets one consistent event table. Both

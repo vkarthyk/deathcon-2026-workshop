@@ -178,7 +178,7 @@ class NotebookExerciseTests(unittest.TestCase):
             # Execute clean exercise sources, not a participant's saved model opt-in settings.
             from datagen.jupyter_exercises import EXERCISES
             notebook = {'cells': [{'cell_type': 'code', 'source': code.splitlines(keepends=True)}
-                                  for _, _, code in EXERCISES['04_Investigate_alerts']]}
+                                  for _, _, code in EXERCISES['05_Investigate_alerts']]}
             with patch.dict('os.environ', {'WORKSHOP_ARTIFACT_DIR': directory}):
                 for cell in notebook['cells']:
                     source = ''.join(cell['source'])

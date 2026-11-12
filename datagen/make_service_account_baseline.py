@@ -350,11 +350,11 @@ def notebook():
             cell.update(execution_count=None, outputs=[])
         cells.append(cell)
 
-    add('markdown', f'''# 05 Detect service account deviations
+    add('markdown', f'''# 04 Detect service account deviations
 
-**Extra lab · about 60 minutes · after notebooks 01–04**
+**Lab 4 · about 60 minutes · after notebooks 01–03**
 
-Notebooks 01–04 applied one schema to one Kubernetes behavior. This lab tests whether
+Notebooks 01–03 applied one schema to one Kubernetes behavior. This lab tests whether
 the method transfers to a different log source and a different kind of detection.
 You map AWS CloudTrail, GCP Cloud Audit Logs and Azure Activity Log records to one
 contract, learn what each service account normally does, and flag what it has never
@@ -568,6 +568,7 @@ cloud-provider address ranges, and who reviews new accounts.
 
 When finished, run the next cell to remove only this attempt’s temporary database.''')
     add('code', 'attempt.cleanup()')
+    add('markdown', 'Continue to [05 Investigate alerts](05_Investigate_alerts.ipynb). It uses the behavioral rule you saved in notebook 03.')
     return dict(cells=cells, metadata={'kernelspec': {'display_name': 'Python 3 (ipykernel)',
                 'language': 'python', 'name': 'python3'}, 'language_info': {'name': 'python'}},
                 nbformat=4, nbformat_minor=5)
@@ -580,7 +581,7 @@ def main(root=None):
     write_raw(raw, lab / 'raw')
     write_catalog(lab / 'action_catalog.csv')
     print(lab)
-    path = root / 'notebooks/05_Detect_service_account_deviations.ipynb'
+    path = root / 'notebooks/04_Detect_service_account_deviations.ipynb'
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(notebook(), indent=1) + '\n')
 

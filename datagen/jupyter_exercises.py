@@ -1,6 +1,6 @@
 """Optional evidence investigation cells; no fixture authoring or scoring workflow."""
 EXERCISES = {
-'04_Investigate_alerts': [
+'05_Investigate_alerts': [
 ('Run the scripted evidence checker',
  "Choose an alert from your current rule. This checker follows a fixed Python sequence to retrieve the grant, subsequent subject activity, approvals and inventory. It makes no LLM calls. Inspect its returned rows and severity reasons; its hard-coded assessment is a suggestion to review, not proof of compromise. The import `from agent.triage import run` points to the shared Python module: calling `run` without `model` selects this scripted mode.",
  'from workshop.exercises import artifacts, save_records\nfrom agent.triage import run\nimport pandas as pd\nsession.refresh_rule()\nalerts = session.execute("SELECT DISTINCT alert_key FROM main.workshop_alerts ORDER BY 1")\n# TODO: keep the first alert, or uncomment the next line and paste another alert key.\nselected_alert_key = alerts[0]["alert_key"] if alerts else None\n# selected_alert_key = "COPY_ALERT_KEY"\nif selected_alert_key:\n    own_record = run(session.engine, selected_alert_key, split="enterprise")\n    save_records("my-notebook-alert.jsonl", [own_record])\n    display(own_record["assessment"])\n    display(pd.DataFrame(own_record["trace"]))\nelse:\n    print("Your rule produced no alerts. Review the source activity and rule conditions.")'),

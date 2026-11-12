@@ -53,10 +53,11 @@ rerun notebook 03 setup, and save the new view definition.
 | 01 Cloud specific detections | Complete and check cluster-admin binding-attempt detections in EKS, GKE and AKS | 15 minutes |
 | 02 Normalize the logs | Map and validate four fields per cloud, write one unified rule, then update it to success-only | 20 minutes |
 | 03 Write the behavioral rule | Follow the granted subject using exact asset scope and event order | 10 minutes |
-| 04 Investigate alerts | Verify source evidence and record uncertainty | 10 minutes |
-| 05 Detect service account deviations (extra) | Map three cloud control-plane logs and flag new service-account behavior | 60 minutes |
+| 04 Detect service account deviations | Map three cloud control-plane logs and flag new service-account behavior | 60 minutes |
+| 05 Investigate alerts | Verify source evidence and record uncertainty | 10 minutes |
 
-This core path totals one hour. Open the collapsed hints early if a TODO takes
+The full path takes about two hours: about 50 minutes for notebooks 00–03, 60 for
+notebook 04 and 10 for notebook 05. Open the collapsed hints early if a TODO takes
 more than a minute. Leave deeper investigations and the optional local model for
 after the timed workshop. Keep queries scoped to an asset and a short time window.
 
@@ -181,7 +182,7 @@ times in custom rule output so evidence views can join correctly.
 
 ## Investigate evidence
 
-Notebook 04 shows a bounded actor/subject timeline around an alert. Select an alert
+Notebook 05 shows a bounded actor/subject timeline around an alert. Select an alert
 from your rule and run the scripted evidence checker (no LLM calls), then inspect every tool request,
 returned row and claimed event ID. Its verdict is a hypothesis, not a scored answer.
 
@@ -193,7 +194,7 @@ Optional local inference uses Ollama with `qwen3:8b`. Install/download separatel
 then set `RUN_LOCAL_MODEL=True`; no paid provider or model is started by setup.
 See [agent-lab.md](docs/agent-lab.md). Save transcripts and notes in `artifacts/`.
 
-Notebook 04 also includes a self-guided raw-versus-normalized AI comparison. After
+Notebook 05 also includes a self-guided raw-versus-normalized AI comparison. After
 installing Ollama, enable `RUN_SCHEMA_COMPARISON` to run one matched pair with
 identical SQL-only tools, model, prompt and turn limit. Inspect query traces and
 reference-event coverage before comparing effort. Use `COMPARE_ALL_CLOUDS` for
@@ -233,15 +234,15 @@ DuckDB file, stop the process using it or choose another database path. If an ed
 rule is missing, run notebook 03's save-rule cell and check the saved artifact.
 
 
-For a 60-minute extension after notebooks 01–04, open
-[`notebooks/05_Detect_service_account_deviations.ipynb`](notebooks/05_Detect_service_account_deviations.ipynb). Its Markdown cells contain the brief, steps and hints. Map AWS CloudTrail, GCP Cloud Audit
+Notebook 04, [`notebooks/04_Detect_service_account_deviations.ipynb`](notebooks/04_Detect_service_account_deviations.ipynb),
+takes the method beyond Kubernetes in about 60 minutes. Its Markdown cells contain the brief, steps and hints. Map AWS CloudTrail, GCP Cloud Audit
 and Azure Activity logs to one contract, build a per-service-account baseline and
-flag new actions, networks and clients. This extension is separate from the one-hour core path.
+flag new actions, networks and clients. It uses its own data and does not depend on notebook 03's saved rule.
 
 ## Practice with the CTF
 
 Try [Find the admin grant](ctf/easy/README.md) after notebooks 01–02, and
-[Follow the recipient](ctf/hard/README.md) after notebooks 03–04. Both can also be
+[Follow the recipient](ctf/hard/README.md) after notebooks 03 and 05. Both can also be
 attempted before the workshop; progressive hints point back to the relevant
 lessons. These are separate synthetic cases, not copies of the workshop answers.
 See [ctf/README.md](ctf/README.md) to build and open the standalone challenges.
