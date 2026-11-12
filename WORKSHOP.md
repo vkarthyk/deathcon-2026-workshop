@@ -234,8 +234,7 @@ rule is missing, run notebook 03's save-rule cell and check the saved artifact.
 
 
 For a 60-minute extension after notebooks 01–04, open
-[`notebooks/05_Detect_service_account_deviations.ipynb`](notebooks/05_Detect_service_account_deviations.ipynb) and follow the
-[extra lab guide](notebooks/guides/05_Detect_service_account_deviations.md). Map AWS CloudTrail, GCP Cloud Audit
+[`notebooks/05_Detect_service_account_deviations.ipynb`](notebooks/05_Detect_service_account_deviations.ipynb). Its Markdown cells contain the brief, steps and hints. Map AWS CloudTrail, GCP Cloud Audit
 and Azure Activity logs to one contract, build a per-service-account baseline and
 flag new actions, networks and clients. This extension is separate from the one-hour core path.
 

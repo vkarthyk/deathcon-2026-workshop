@@ -7,9 +7,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from workshop.behavioral import participant_view_sql  # noqa: E402
 from workshop.notebooks import split_statements, strip_leading_comments  # noqa: E402
-from datagen.notebook_hints import SQL_REFERENCE, TASKS, optional_hint
+from datagen.notebook_hints import SQL_REFERENCE, TASKS
 from datagen.jupyter_exercises import EVIDENCE_REVIEW
-from datagen.binding_exercise import RAW_HEADINGS, UNIFIED_SCAFFOLD, SUCCESS_UPDATE_SCAFFOLD, raw_scaffold, raw_hints, normalization_cells  # noqa: E402
+from datagen.binding_exercise import UNIFIED_SCAFFOLD, SUCCESS_UPDATE_SCAFFOLD, raw_scaffold  # noqa: E402
 
 
 def evaluation(split):
@@ -111,7 +111,7 @@ EXPLANATIONS = {'00_Start_here': [('Explore the enterprise day',
                    ('Inspect the behavioral alerts',
                     'List sequence matches from the current participant rule (the reference rule unless you have saved edits).',
                     'Compare grant actors, granted subjects, grant times and first-read times. alert_key identifies the grant; individual evidence events are not selected here.',
-                    'Choose an alert_key, then query main.alert_evidence for its source event IDs or use notebook 05.')],
+                    'Choose an alert_key, then query main.alert_evidence for its source event IDs or use notebook 04.')],
  '01_Cloud_specific_detections': [('Inspect a native EKS record',
                                        'Preview the unwrapped Kubernetes audit JSON from the modeled '
                                        'CloudWatch envelope.',
@@ -185,32 +185,22 @@ def explained_statements(name, cells):
 def main():
     output = ROOT / "notebooks" / "sql"
     output.mkdir(parents=True, exist_ok=True)
-    guides = ROOT / "notebooks" / "guides"
-    guides.mkdir(parents=True, exist_ok=True)
     for name, cells in notebooks().items():
-        native, guide = [], [f"# {name.replace('_', ' ')}\n",
-            "Read each explanation, then run the following SQL. In DuckDB UI these explanations are comment-only cells; this file renders them as Markdown.\n"]
-        guide.append(SQL_REFERENCE)
+        # Jupyter notebooks carry the Markdown explanations; DuckDB UI gets comment-only cells.
+        native = []
         native.append("\n".join("-- " + line if line else "--" for line in SQL_REFERENCE.splitlines()))
         if name == '02_Normalize_the_logs':
-            for kind, source in normalization_cells():
-                guide.append(source + "\n" if kind == 'markdown' else "```python\n" + source + "\n```\n")
             native.append('-- This notebook has Python mapping steps. Open 02_Normalize_the_logs.ipynb in Jupyter to complete them before the final SQL exercise.')
         for index, ((heading, purpose, expected, action), statement) in enumerate(explained_statements(name, cells), 1):
-            hint = raw_hints(RAW_HEADINGS[heading]) if heading in RAW_HEADINGS else optional_hint(heading)
             explanation = (f"READ FIRST — {index}. {heading}\n\n"
                            f"What this does: {purpose}\n\n"
                            f"What to look for: {expected}\n\n"
                            f"Your next step: {action}\n\n"
                            "Read this cell; run the SQL cell immediately below it.")
             native += ["\n".join("-- " + line if line else "--" for line in explanation.splitlines()), statement]
-            guide += [f"## {index}. {heading}\n", purpose + "\n", f"**What to look for:** {expected}\n",
-                      f"**Your next step:** {action}{hint}\n", "```sql\n" + statement + "\n```\n"]
         if name == '04_Investigate_alerts':
-            guide.append(EVIDENCE_REVIEW)
             native.append('\n'.join('-- ' + line if line else '--' for line in EVIDENCE_REVIEW.splitlines()))
         (output / f"{name}.sql").write_text("\n\n-- %%\n\n".join(native) + "\n")
-        (guides / f"{name}.md").write_text("\n".join(guide))
         print(name)
 
 

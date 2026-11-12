@@ -81,7 +81,7 @@ LEFT JOIN ref.action_catalog c USING (cloud_provider, cloud_api_action);
 -- ---------------------------------------------------------------------------
 -- 2-5. The detection. This starter is the simple version: compare exact values
 -- with a per-principal baseline. It runs, but it is wrong in several ways.
--- Step 3 of the lab guide lists what to fix. Keep the view names and columns.
+-- Step 3 of notebooks/05_Detect_service_account_deviations.ipynb lists what to fix. Keep the view names and columns.
 -- ---------------------------------------------------------------------------
 
 -- One row per comparable value of a service-account event.

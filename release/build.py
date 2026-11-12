@@ -73,10 +73,8 @@ def student_tree(folder):
         copy_file(ROOT / 'detection' / name, folder / 'detection' / name)
     for path in (ROOT / 'docs').glob('*.md'):
         copy_file(path, folder / 'docs' / path.name)
-    for name in ('HINTS.md', 'detection.sql'):
-        copy_file(ROOT / 'labs/service_account_baseline' / name, folder / 'labs/service_account_baseline' / name)
-    copy_file(ROOT / 'notebooks/guides/05_Detect_service_account_deviations.md',
-              folder / 'notebooks/guides/05_Detect_service_account_deviations.md')
+    copy_file(ROOT / 'labs/service_account_baseline/detection.sql',
+              folder / 'labs/service_account_baseline/detection.sql')
     # Keep participant-guide CTF links valid, without bundling any organizer material.
     for challenge in ('easy', 'hard'):
         for name in ('README.md', 'HINTS.md'):

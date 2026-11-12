@@ -76,7 +76,7 @@ Follow notebook 04 for the remaining steps. No model is started automatically.
 ## CTF practice
 
 For a 60-minute extension after notebooks 01–04, open
-`notebooks/05_Detect_service_account_deviations.ipynb` in the workshop JupyterLab session. Follow its guide
+`notebooks/05_Detect_service_account_deviations.ipynb` in the workshop JupyterLab session. Follow its steps
 to map three clouds' control-plane logs and detect service accounts doing something
 new. The extension is included in the student workshop ZIP.
 

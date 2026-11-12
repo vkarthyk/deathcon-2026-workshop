@@ -333,22 +333,76 @@ def write_catalog(path):
     Path(path).write_text(buffer.getvalue())
 
 
+DETECTION_LINK = '[`labs/service_account_baseline/detection.sql`](../labs/service_account_baseline/detection.sql)'
+
+
+def hint(title, body):
+    return f'<details>\n<summary>Need a hint? {title}</summary>\n\n{body.strip()}\n\n</details>'
+
+
 def notebook():
     cells = []
 
     def add(kind, source):
         cell = dict(cell_type=kind, id=f'service_account_baseline-{len(cells)}', metadata={},
-                    source=source.splitlines(keepends=True))
+                    source=source.strip('\n').splitlines(keepends=True))
         if kind == 'code':
             cell.update(execution_count=None, outputs=[])
         cells.append(cell)
 
-    add('markdown', '# 05 Detect service account deviations\n\n'
-        'Extra lab · about 60 minutes · after notebooks 01–04. Read [the lab guide](guides/05_Detect_service_account_deviations.md) '
-        'for the brief, field contracts and practice targets. You apply the workshop method to a new '
-        'detection class: map AWS CloudTrail, GCP Cloud Audit Logs and Azure Activity Log records to one '
-        'contract, learn what each service account normally does, and flag what it has never done before. '
-        'All logs are synthetic and local. Edit `labs/service_account_baseline/detection.sql`.')
+    add('markdown', f'''# 05 Detect service account deviations
+
+**Extra lab · about 60 minutes · after notebooks 01–04**
+
+Notebooks 01–04 applied one schema to one Kubernetes behavior. This lab tests whether
+the method transfers to a different log source and a different kind of detection.
+You map AWS CloudTrail, GCP Cloud Audit Logs and Azure Activity Log records to one
+contract, learn what each service account normally does, and flag what it has never
+done before. The detection follows the "Service Account Activity Baseline Deviation"
+example in [Multi-Cloud Detection at Scale](https://cloudnativedetection.substack.com/p/multi-cloud-detection-at-scale-a).
+
+Everything runs locally on synthetic logs. No cloud access, credentials or model is needed.
+
+**Where you work:** make all your changes in one file, {DETECTION_LINK}.
+Paths are relative to the repository root. Keep the file's view names and columns.
+Save the file, then rerun the notebook cells to see the effect.
+
+| Step | Time | You edit |
+|---|---|---|
+| 1. Read the raw records | 10 min | Nothing; read the AWS worked example |
+| 2. Map GCP and Azure | 15 min | `sa.gcp_events` and `sa.azure_events` |
+| 3. Fix the baseline rule | 20 min | `sa.observations`, `sa.baseline`, `sa.deviations`, `sa.insufficient_baseline` |
+| 4. Triage | 10 min | Nothing; answer the questions |''')
+    add('markdown', '''## The brief
+
+Service accounts are predictable: the same job calls the same APIs from the same
+place with the same client every day. That makes "never done this before" a useful
+signal when a credential is stolen.
+
+The data covers a **14-day learning window** (29 October to 11 November 2026) and
+**one detection day** (12 November). Your rule reports, for each service account in
+each account or project, every action, source network or client it used on the
+detection day that it never used in the learning window.
+
+A deviation is a reason to investigate, not proof of compromise.''')
+    add('markdown', '''## Set up
+
+Run this cell once per kernel. It loads the raw logs into a fresh temporary DuckDB
+database and shows the learning and detection windows.
+
+<details>
+<summary>Prefer the command line?</summary>
+
+From the repository root:
+
+```bash
+.workshop-venv/bin/python -m workshop.service_account_baseline --database artifacts/sa_baseline.duckdb
+```
+
+On Windows use `.\\.workshop-venv\\Scripts\\python.exe`. Do not name the database file
+`raw`, `ref`, `lab` or `sa`; DuckDB would confuse it with a lab schema.
+
+</details>''')
     add('code', '''from pathlib import Path
 import json
 import sys
@@ -366,40 +420,153 @@ attempt = tempfile.TemporaryDirectory(prefix='service_account_baseline-notebook-
 lab = Lab(Path(attempt.name) / 'state.duckdb')
 detection = root / 'labs/service_account_baseline/detection.sql'
 lab.window()''')
-    add('markdown', '## 1. Read the raw records\n\n'
-        'Each cloud names the same ideas differently. Find the caller, the account, the source address, '
-        'the client and the outcome in each record. AWS is mapped for you in `detection.sql` as a '
-        'worked example. Note what is missing: Azure Activity Log has no user agent.')
+    add('markdown', f'''## 1. Read the raw records — 10 minutes
+
+The next cell prints one `backup-agent` record from each cloud. For each, find the
+**caller**, the **account**, the **operation**, the **source address**, the **client**
+and the **outcome**. Each cloud names the same ideas differently.
+
+Then open {DETECTION_LINK} and read the `sa.aws_events` view at the top. It is a
+complete worked example. Notice:
+
+- An AWS role session ARN changes with every session. The **issuing role ARN** is
+  the stable identity.
+- People also use roles in AWS, through IAM Identity Center (`AWSReservedSSO_*`).
+  Those are humans.
+- When an AWS service acts with the caller's credentials, the source address is a
+  service name such as `cloudformation.amazonaws.com`, not an IP.
+- Azure Activity Log has no user agent at all.''')
     add('code', '''for provider in ('AWS', 'GCP', 'Azure'):
     print(f'--- {provider}')
     print(json.dumps(lab.sample(provider, 'backup-agent', '192.0.2.10'), indent=2))''')
-    add('markdown', '## 2. Map GCP and Azure to the shared contract\n\n'
-        'Complete the `TODO` expressions in `sa.gcp_events` and `sa.azure_events`, then rerun this cell. '
-        'Every provider should have zero missing principals and accounts, and service-account rows '
-        'should dominate. Azure `Start` events are neither success nor failure.')
+    add('markdown', f'''## 2. Map GCP and Azure — 15 minutes
+
+**Edit:** {DETECTION_LINK}, views `sa.gcp_events` and `sa.azure_events`.
+
+Replace each `NULL` placeholder marked `-- TODO` with an expression that reads the
+field from the raw record `r`. Leave the supplied `sa.events` view below them unchanged.
+
+| Column | GCP | Azure |
+|---|---|---|
+| `account_uid` | Project ID in the monitored resource labels | Subscription ID inside `resourceId` |
+| `principal` | Authenticated principal email | `identity.claims.appid` when `idtyp = 'app'`, otherwise `caller` |
+| `principal_type` | `service_account` if the email ends in `.gserviceaccount.com` | `service_account` if `idtyp = 'app'` |
+| `source_ip` | `callerIp`, or NULL if it is not an IPv4 address (for example `private`) | `callerIpAddress`, same rule |
+| `user_agent` | `callerSuppliedUserAgent` | Not recorded: NULL |
+| `status_id` | 1 when `status.code` is missing or 0, else 2 | `Success` 1, `Failure` 2, `Start` 0 |
+
+The supplied `sa.events` view joins `ref.action_catalog`, which translates raw
+operations such as `GetSecretValue` and `AccessSecretVersion` into one shared
+`action_type`, here `secret-read`.
+
+**Done when:** after saving the file and running the next cell, every provider has
+zero `missing_principal`, `missing_account` and `missing_status`, and zero
+`invalid_principal_type`.''')
+    add('markdown', hint('Where are the GCP and Azure fields?', '''
+GCP: `r->>'$.resource.labels.project_id'`,
+`r->>'$.protoPayload.authenticationInfo.principalEmail'`,
+`r->>'$.protoPayload.requestMetadata.callerIp'` and `.callerSuppliedUserAgent`,
+`r->>'$.protoPayload.status.code'`.
+
+Azure: `split_part(r->>'$.resourceId', '/', 3)`, `r->>'$.identity.claims.idtyp'`,
+`r->>'$.identity.claims.appid'`, `r->>'$.caller'`, `r->>'$.callerIpAddress'`,
+`r->>'$.resultType'`. Reuse the AWS IPv4 `regexp_matches` test.'''))
     add('code', 'lab.run(detection)\nlab.quality()')
-    add('markdown', '## 3. Baseline and deviations\n\n'
-        'The starter rule is the simple version from the article: compare exact values against a '
-        'baseline keyed by principal. Inspect what it reports, then fix `sa.observations`, '
-        '`sa.baseline` and `sa.deviations` following step 3 of the guide.')
+    add('markdown', f'''## 3. Fix the baseline rule — 20 minutes
+
+**Edit:** {DETECTION_LINK}, views `sa.observations`, `sa.baseline`, `sa.deviations`
+and `sa.insufficient_baseline` in the lower half of the file.
+
+The starter is the simple version from the article: compare exact values with a
+baseline keyed by principal. It runs, and it is wrong. Run the cells below to see
+what it reports, then fix it so that:
+
+1. **Only successful service-account calls count**, in both the baseline and the
+   detection day. Failed calls and Azure `Start` events are not behavior the
+   account completed.
+2. **The baseline is scoped to provider, account and principal.** In GCP and Azure,
+   one service account can act in several projects or subscriptions with different
+   duties. Reading secrets may be normal in one and new in another.
+3. **Actions missing from the catalog still count.** Use the raw `cloud_api_action`
+   when `action_type` is NULL. Unknown operations must not disappear.
+4. **Networks, not hosts.** Compare IPv4 sources as `/24` networks, written as
+   `a.b.c.0/24`. NAT gateways and CI runners rotate hosts within a range.
+5. **Client family, not version.** Compare user agents as the lower-case text before
+   the first `/`, trimmed: `Terraform/1.10.0 (...)` becomes `terraform`.
+6. **Missing values are not deviations.** Compare only non-NULL sources and clients.
+7. **Insufficient history is reported separately.** A principal with fewer than
+   `min_baseline_days` (7) distinct active days in the learning window belongs in
+   `sa.insufficient_baseline` with its `baseline_days` and detection-day event
+   count, and nowhere in `sa.deviations`.
+
+Each row of `sa.deviations` is one new value for one principal, with `first_seen`,
+`last_seen`, `event_count` (successful detection-day events with that value) and a
+`sample_event_id`.
+
+**After each edit:** save the file, rerun the `lab.run(detection)` cell in step 2,
+then rerun the cells below.''')
+    add('markdown', '\n\n'.join([
+        hint('Why are some secret reads missing from the deviations?', '''
+Look at the same GCP email or Azure application ID in both accounts. If the
+baseline is keyed by principal alone, normal behavior in one account hides new
+behavior in another. Add `cloud_provider` and `account_uid` to the baseline and
+to the comparison.'''),
+        hint('Why are there deviations with a NULL observed value?', '''
+`NULL = NULL` is not true in SQL, so a NULL can never match the baseline. Filter
+NULL sources and clients out of `sa.observations`, and use
+`coalesce(action_type, cloud_api_action)` for actions.'''),
+        hint('How do I turn values into networks and client families?', '''
+`regexp_replace(source_ip, '\\.\\d+$', '.0/24')` and
+`lower(trim(split_part(user_agent, '/', 1)))`.'''),
+        hint('How do I require enough history?', '''
+`sa.baseline_coverage` already counts distinct active days. Join it in
+`sa.deviations` and keep principals with `baseline_days >= min_baseline_days`
+from `lab.detection_window`. For `sa.insufficient_baseline`, start from the
+detection-day observations, LEFT JOIN coverage, and keep principals below the
+threshold, using `coalesce(baseline_days, 0)`. Count distinct `event_id`s.''')]))
     add('code', 'rows(lab.db, "SELECT * FROM sa.deviations ORDER BY cloud_provider, principal, dimension, observed_value")')
-    add('markdown', 'Accounts without enough history cannot be baselined. They belong in a separate review list, '
+    add('markdown', 'Accounts without enough history cannot be baselined. They belong in this separate review list, '
         'not in the deviation alerts and not silently dropped.')
     add('code', 'rows(lab.db, "SELECT * FROM sa.insufficient_baseline ORDER BY cloud_provider, principal")')
-    add('markdown', '## 4. Triage\n\n'
-        'For each principal with deviations, decide: credential misuse, legitimate change, or unknown. '
-        'Use the evidence query below. Then answer: which attack in this data set does the rule not see, '
-        'and what other evidence would reveal it?')
+    add('markdown', '''## 4. Triage — 10 minutes
+
+For each principal with deviations, decide whether it looks like **credential
+misuse**, a **legitimate change**, or **unknown**, and say what evidence you used.
+The next cell lists every detection-day event for those principals.
+
+Then find the attack this rule cannot see. Hint: compare detection-day volume with
+the baseline. What other signals would reveal it?''')
     add('code', '''rows(lab.db, """SELECT e.cloud_provider, e.principal, e.time, e.cloud_api_action, e.action_type,
        e.source_ip, e.user_agent, e.status_id
 FROM sa.events e JOIN sa.deviations d USING (cloud_provider, account_uid, principal)
 WHERE e.time >= (SELECT detection_start FROM lab.detection_window)
 GROUP BY ALL ORDER BY e.cloud_provider, e.principal, e.time""")''')
-    add('markdown', '## Submit\n\n'
-        'Save `detection.sql` and a short note: your identity and network choices, one false positive '
-        'you removed, one alert you consider benign and why, and the blind spot. Practice targets are '
-        'in the guide. The organizer grades with a different data set, so check that your SQL follows '
-        'the contract rather than the counts.\n\nWhen finished, remove only this attempt’s temporary database.')
+    add('markdown', '''## Practice targets
+
+With the practice data, a correct solution reports:
+
+- **17 deviations**: 6 AWS, 6 GCP and 5 Azure (12 actions, 3 networks, 2 clients).
+  Azure has no user agents, so it has one fewer.
+- **3 principals with insufficient history**, one per cloud, each with 2 baseline days.
+- `lab.quality()` shows AWS 233 rows (222 service account), GCP 226 (215) and
+  Azure 448 (426), with Azure's 224 `Start` events as status 0.
+
+The organizer grades with a different data set, so follow the rules in step 3
+instead of tuning to these counts.''')
+    add('markdown', '''## Submit and debrief
+
+Submit `labs/service_account_baseline/detection.sql` and a short note covering:
+
+- your identity choices for each cloud
+- one false positive you removed, and how
+- one deviation you consider benign, and why
+- the blind spot
+
+Discuss before production use: how long the learning window should be, how to keep
+an attacker from becoming part of the baseline, how to handle IPv6 and
+cloud-provider address ranges, and who reviews new accounts.
+
+When finished, run the next cell to remove only this attempt’s temporary database.''')
     add('code', 'attempt.cleanup()')
     return dict(cells=cells, metadata={'kernelspec': {'display_name': 'Python 3 (ipykernel)',
                 'language': 'python', 'name': 'python3'}, 'language_info': {'name': 'python'}},
