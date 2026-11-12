@@ -51,7 +51,10 @@ class ReleaseTests(unittest.TestCase):
                 self.assertNotIn('ground_truth', name)
                 self.assertNotIn('detection/simple_cluster_admin', name)
             notebooks = [name for name in names if name.endswith('.ipynb')]
-            self.assertEqual(len(notebooks), 5)
+            self.assertEqual(len(notebooks), 6)
+            self.assertIn('workshop-student/notebooks/05_Run_the_detection_in_batches.ipynb', names)
+            self.assertIn('workshop-student/workshop/scheduled_detection.py', names)
+            self.assertNotIn('workshop-student/datagen/make_scheduled_detection.py', names)
             mapping_count = 0
             for name in notebooks:
                 notebook = nbformat.reads(archive.read(name).decode(), as_version=4)
@@ -81,7 +84,7 @@ class ReleaseTests(unittest.TestCase):
             names = archive.namelist()
             self.assertIn('facilitator-solutions/solutions/binding_exercise/mappings.py', names)
             notebooks = [n for n in names if n.startswith('facilitator-solutions/notebooks/')]
-            self.assertEqual(len(notebooks), 5)
+            self.assertEqual(len(notebooks), 6)
             for name in notebooks:
                 notebook = nbformat.reads(archive.read(name).decode(), as_version=4)
                 nbformat.validate(notebook)

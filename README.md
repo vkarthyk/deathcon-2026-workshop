@@ -49,6 +49,10 @@ its setup. Other temporary SQL changes do not carry across notebooks.
 - An evidence-backed alert investigation with bounded tools.
 - A reviewable SQL rule, source evidence and documented limitations.
 
+Extra lab: [05 Run the detection in batches](notebooks/05_Run_the_detection_in_batches.ipynb)
+adds late logs, duplicate deliveries, restarts and collector outages after the core
+notebooks. Allow 60–90 minutes; see [the guide](notebooks/guides/05_Run_the_detection_in_batches.md).
+
 ## CTF practice
 
 Two standalone challenges reinforce the workshop: find successful admin grants in

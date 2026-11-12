@@ -133,7 +133,7 @@ class JupyterTests(unittest.TestCase):
         with patch.object(generator, "ROOT", output), contextlib.redirect_stdout(io.StringIO()):
             generator.main()
         paths = sorted((output / "notebooks").glob("*.ipynb"))
-        self.assertEqual(len(paths), 5)
+        self.assertEqual(len(paths), 6)
         sql_count = 0
         for path in paths:
             notebook = json.loads(path.read_text())

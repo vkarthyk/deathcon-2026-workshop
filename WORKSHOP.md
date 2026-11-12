@@ -54,6 +54,7 @@ rerun notebook 03 setup, and save the new view definition.
 | 02 Normalize the logs | Map and validate four fields per cloud, write one unified rule, then update it to success-only | 20 minutes |
 | 03 Write the behavioral rule | Follow the granted subject using exact asset scope and event order | 10 minutes |
 | 04 Investigate alerts | Verify source evidence and record uncertainty | 10 minutes |
+| 05 Run the detection in batches (extra) | Handle late logs, retries, restarts and missing telemetry | 60–90 minutes |
 
 This core path totals one hour. Open the collapsed hints early if a TODO takes
 more than a minute. Leave deeper investigations and the optional local model for
@@ -231,6 +232,12 @@ For missing dependencies, check your approved package index/proxy. For a locked
 DuckDB file, stop the process using it or choose another database path. If an edited
 rule is missing, run notebook 03's save-rule cell and check the saved artifact.
 
+
+For an advanced 60–90 minute extension after notebooks 03–04, open
+[`notebooks/05_Run_the_detection_in_batches.ipynb`](notebooks/05_Run_the_detection_in_batches.ipynb) and follow the
+[extra lab guide](notebooks/guides/05_Run_the_detection_in_batches.md). Repair a scheduled pipeline
+under delayed delivery, retries, restarts and collector outages while preserving
+the behavioral rule. This extension is separate from the one-hour core path.
 
 ## Practice with the CTF
 

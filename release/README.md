@@ -22,9 +22,15 @@ organizers/                     # restrict with file-server ACLs
   SHA256SUMS
 ```
 
-The builder uses an explicit file allowlist. It regenerates the five notebooks from scaffolds in a temporary folder, preserving the author's working notebooks. Outputs, execution counts, completed exercise mappings and saved local rules do not enter the student ZIP. It excludes `solutions/`, raw exercise reference-query files, test/evaluation labels, `.git/`, local environments, credentials, artifacts and transcripts. Prepared ingestion assets and transparent runtime checking logic are included because the core workshop needs them; self-service checks are not secret grading.
+The builder uses an explicit file allowlist. It regenerates the six notebooks from scaffolds in a temporary folder, preserving the author's working notebooks. Outputs, execution counts, completed exercise mappings and saved local rules do not enter the student ZIP. It excludes `solutions/`, raw exercise reference-query files, test/evaluation labels, `.git/`, local environments, credentials, artifacts and transcripts. Prepared ingestion assets and transparent runtime checking logic are included because the core workshop needs them; self-service checks are not secret grading.
 
 The student edition contains the supplied behavioral rule from notebook 03 by design; that lesson asks students to read, run and modify the supplied sequence. Its raw-detection and normalization TODOs remain incomplete. Facilitator answer notebooks resolve those TODOs in the restricted ZIP.
+
+The extra notebook `notebooks/05_Run_the_detection_in_batches.ipynb` includes
+a flawed SQL pipeline and synthetic practice schedule under `labs/scheduled_detection/`. Its reference pipeline, independent evaluator and scenario generator
+are included only in the restricted facilitator overlay. The replay runtime works
+with the native DuckDB CLI or the workshop's Python engine. The builder freshly
+generates its notebook and practice schedule, preserving local notebook edits.
 
 Both `setup.sh` and the native Windows `setup.ps1` launcher are included, together
 with the Windows setup guide. The PowerShell launcher does not require WSL or a

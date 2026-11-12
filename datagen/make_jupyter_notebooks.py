@@ -94,10 +94,12 @@ def main():
             following = names[index + 1]
             add("markdown", f"Continue to [{following.replace('_', ' ')}]({following}.ipynb). Run its setup cell first; saved rule edits carry across notebooks.")
         else:
-            add("markdown", "You have completed the notebook workflow. Review your artifacts and record the rule specification, source evidence and remaining uncertainty. See [the agent guide](../docs/agent-lab.md) for additional background.")
+            add("markdown", "You have completed the core notebook workflow. Continue with the optional extra lab [05 Run the detection in batches](05_Run_the_detection_in_batches.ipynb), or review your artifacts and record the rule specification, source evidence and remaining uncertainty. See [the agent guide](../docs/agent-lab.md) for additional background.")
         document = dict(cells=cells, metadata={"kernelspec": {"display_name": "Python 3 (ipykernel)", "language": "python", "name": "python3"}, "language_info": {"name": "python", "version": "3.11"}}, nbformat=4, nbformat_minor=5)
         (ROOT / "notebooks" / f"{name}.ipynb").write_text(json.dumps(document, indent=1) + "\n")
         print(name)
+    from datagen.make_scheduled_detection import main as extra_lab
+    extra_lab(ROOT)
 
 
 if __name__ == "__main__":
