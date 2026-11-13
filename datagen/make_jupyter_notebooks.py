@@ -27,7 +27,7 @@ invent missing logs, resolve identities automatically, or prove malicious intent
 | `enterprise.k8s_ocsf` | All normalized Kubernetes event types, with one row per source event and asset. Role references are projected into columns when present. | Query normalized fields without repeating provider-specific JSON extraction. |
 | `enterprise.k8s_subjects` | Repeated request subjects stored separately, preserving the event table's row count. | Join subjects to their source event to follow each granted subject. |
 | Ingestion preparation | Relational fields prepared through engine-specific JSON extraction and file loading. | Keep preparation separate from the normalized detection SQL. |
-| Notebook 01 | Three incomplete cloud-specific binding detections. | Write the predicates and check the matching source events. |
+| Notebook 01 | Three incomplete cloud-specific binding detections. | Write the filter expressions and check the matching source events. |
 | Notebook 02 | A ten-field contract and participant-authored SQL mappings. | Build and validate your own binding table, then write one unified detection. |
 | Notebook 03 | An advanced sequence over the fuller prepared schema. | Correlate grants with subsequent secret-list activity. |
 

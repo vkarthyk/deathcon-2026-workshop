@@ -24,13 +24,13 @@
 --
 -- What to look for: Compare grant_actor, subject, subject_kind, role_kind, status_id and event_id. This preview filters only resource_type and role name; it does not yet require a successful create, a User subject or a subsequent secret list.
 --
--- Your next step: Compare grant_actor with subject. To inspect the request body, look up event_id in enterprise.k8s_ocsf using provider, account and cluster scope; then choose the detection predicates.
+-- Your next step: Compare grant_actor with subject. To inspect the request body, look up event_id in enterprise.k8s_ocsf using provider, account and cluster scope; then choose the detection filter expressions.
 --
 -- Read this cell; run the SQL cell immediately below it.
 
 -- %%
 
--- TODO: Compare actor and subject; identify predicates still needed for a valid grant.
+-- TODO: Compare actor and subject; identify filter expressions still needed for a valid grant.
 -- Extend the simple binding detection from notebook 02 into a grant-to-secret-list sequence, using only normalized fields. Join the full Kubernetes event table to its request-subject child relation. Every supported subject in the request gets its own row without duplicating the event table.
 -- Compare grant_actor, subject, subject_kind, role_kind, status_id and event_id. This preview filters only resource_type and role name; it does not yet require a successful create, a User subject or a subsequent secret list.
 SELECT e.provider, e.principal AS grant_actor, s.subject, s.subject_kind,
@@ -58,7 +58,7 @@ ORDER BY e.time;
 --
 -- **What this demonstrates:** Notebook 02 detected a single binding event. Here, one rule correlates multiple normalized events across all three clouds, using shared fields for identity, asset scope, success and time. We can change the behavior we detect without repeating provider-specific JSON logic. Normalization supplies consistent fields; the joins and filters supply the detection logic.
 --
--- **Your task:** Read the supplied rule, then run it to save `main.workshop_alerts`. Follow the `grants` CTE (who received access), the `sequences` CTE (what they did next), and `NOT EXISTS` (whether the change was approved). The final LEFT JOIN adds a supplied person identity for attribution; it does not decide whether the sequence matches. Inspect the alerts in the next section, then try a rule change while preserving the output columns.
+-- **Your task:** Read the supplied rule, then run it to save `main.workshop_alerts`. Follow the `grants` subquery (who received access), the `sequences` subquery (what they did next), and `NOT EXISTS` (whether the change was approved). The final LEFT JOIN adds a supplied person identity for attribution; it does not decide whether the sequence matches. Inspect the alerts in the next section, then try a rule change while preserving the output columns.
 --
 -- What to look for: CREATE VIEW defines main.workshop_alerts. The Run your detection section selects its rows.
 --
@@ -81,7 +81,7 @@ ORDER BY e.time;
 -- 
 -- **What this demonstrates:** Notebook 02 detected a single binding event. Here, one rule correlates multiple normalized events across all three clouds, using shared fields for identity, asset scope, success and time. We can change the behavior we detect without repeating provider-specific JSON logic. Normalization supplies consistent fields; the joins and filters supply the detection logic.
 -- 
--- **Your task:** Read the supplied rule, then run it to save `main.workshop_alerts`. Follow the `grants` CTE (who received access), the `sequences` CTE (what they did next), and `NOT EXISTS` (whether the change was approved). The final LEFT JOIN adds a supplied person identity for attribution; it does not decide whether the sequence matches. Inspect the alerts in the next section, then try a rule change while preserving the output columns.
+-- **Your task:** Read the supplied rule, then run it to save `main.workshop_alerts`. Follow the `grants` subquery (who received access), the `sequences` subquery (what they did next), and `NOT EXISTS` (whether the change was approved). The final LEFT JOIN adds a supplied person identity for attribution; it does not decide whether the sequence matches. Inspect the alerts in the next section, then try a rule change while preserving the output columns.
 -- CREATE VIEW defines main.workshop_alerts. The Run your detection section selects its rows.
 CREATE OR REPLACE VIEW main.workshop_alerts AS
 -- Keep successful cluster-admin grants to users, with one row per granted subject.

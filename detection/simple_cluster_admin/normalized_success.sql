@@ -1,4 +1,4 @@
--- Rule update: one shared outcome predicate keeps successful attempts across all providers.
+-- Rule update: one shared outcome filter expression keeps successful attempts across all providers.
 -- Ingestion has already mapped asset keys, native identity and role references.
 SELECT event_id, provider, account_uid, cluster_name, principal AS grant_actor, role
 FROM enterprise.k8s_ocsf

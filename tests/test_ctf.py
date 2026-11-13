@@ -1,4 +1,4 @@
-"""Check CTF solvability, standalone player releases and predicate-sensitive decoys."""
+"""Check CTF solvability, standalone player releases and filter expression-sensitive decoys."""
 import json
 import os
 from pathlib import Path

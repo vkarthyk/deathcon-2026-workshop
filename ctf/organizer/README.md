@@ -40,4 +40,4 @@ For offline practice, learners can use the organizer validator after attempting 
 .workshop-venv/bin/python -m unittest tests.test_ctf
 ```
 
-Tests build temporary releases, validate unique solutions, inspect player databases/archives for answer artifacts, exercise decoy predicates and test the checker. Generated practice/release data under `ctf/dist/` is ignored by Git.
+Tests build temporary releases, validate unique solutions, inspect player databases/archives for answer artifacts, exercise decoy filter expressions and test the checker. Generated practice/release data under `ctf/dist/` is ignored by Git.

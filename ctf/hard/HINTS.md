@@ -19,7 +19,7 @@ Both actions must succeed. The read must be `list` on `secrets` with a NULL name
 <details>
 <summary>Hint 3 — Structure the query</summary>
 
-Use a first CTE to select valid grants and all User recipients. Join it to the event table again to find qualifying recipient activity. Exclude a pair only when `NOT EXISTS` finds an approval matching **all** required scope fields and containing the grant time. An approval for another actor, role, recipient or asset, or an expired approval, is insufficient.
+Use a first subquery to select valid grants and all User recipients. Join it to the event table again to find qualifying recipient activity. Exclude a pair only when `NOT EXISTS` finds an approval matching **all** required scope fields and containing the grant time. An approval for another actor, role, recipient or asset, or an expired approval, is insufficient.
 
 Return distinct grant and read event IDs. Identity resolution is optional attribution; do not require a person mapping to keep a match.
 

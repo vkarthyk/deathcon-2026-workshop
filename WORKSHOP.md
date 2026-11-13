@@ -93,7 +93,7 @@ The participant database does not load regression case suites or evaluation labe
 ordinary SQL. `main.alert_evidence` represents supporting events as rows.
 Supporting inventory remains available to the scripted evidence checker; there is no separate enrichment module.
 
-The teaching queries use regular SQL views, CTEs, joins, CASE expressions, explicit
+The teaching queries use regular SQL views, subqueries, joins, CASE expressions, explicit
 GROUP BY columns and standard interval/cast syntax. DuckDB remains the local runner;
 file readers, nested OCSF extraction and JSON subject expansion live in ingestion.
 Notebook 01 ends with three participant-authored raw detections. Notebook 02 exposes
@@ -106,7 +106,7 @@ are needed in the workshop queries.
 ## Read logs and write the rule
 
 In notebook 01, inspect three source envelopes and replace the `__TODO_...__`
-predicate tokens in the raw detections. `%%sql --check-binding eks` (or `gke`/`aks`)
+filter expression tokens in the raw detections. `%%sql --check-binding eks` (or `gke`/`aks`)
 checks the matching event IDs, full asset keys, actor and role, plus visible
 practice records for failed requests and other edge cases. Incomplete queries
 fail with a clear message; empty results do not pass. Field-by-field hints cover
@@ -133,7 +133,7 @@ End notebook 02 by filling the four target values in one simple normalized rule.
 outcome, so a match does not prove that access was granted.
 
 Finish notebook 02 with a small requirements change: now keep successful attempts
-only. Add one `status_id = 1` predicate to the unified rule and run
+only. Add one `status_id = 1` filter expression to the unified rule and run
 `%%sql --check-binding normalized-success`. Its hints contrast this one change
 with separate HTTP-code conditions in EKS/AKS and a gRPC-status condition in GKE.
 The visible practice-match count drops from 9 to 4 even if the log-day count is

@@ -25,21 +25,21 @@ TASKS = {
     'Inspect a native EKS record': 'Find a binding event that includes a request body.',
     'Inspect a native GKE record': 'Locate operation, caller and request fields; compare their paths with EKS.',
     'Inspect a native AKS record': 'Locate account and cluster scope; distinguish envelope fields from event fields.',
-    'Detect a cluster-admin binding in EKS': 'Fill every predicate token, then run the cell to check event and asset identity.',
-    'Write the same detection for GKE': 'Complete the GKE attempt predicates. The method check can fill both operation/resource slots; outcome is not filtered here.',
-    'Write the same detection for AKS': 'Complete the AKS predicates. Reuse EKS logic where the native fields agree.',
-    'Update the rule to successful attempts': 'Add a single status_id predicate. Compare practice-match counts with the attempt rule above.',
+    'Detect a cluster-admin binding in EKS': 'Fill every filter expression token, then run the cell to check event and asset identity.',
+    'Write the same detection for GKE': 'Complete the GKE attempt filter expressions. The method check can fill both operation/resource slots; outcome is not filtered here.',
+    'Write the same detection for AKS': 'Complete the AKS filter expressions. Reuse EKS logic where the native fields agree.',
+    'Update the rule to successful attempts': 'Add a single status_id filter expression. Compare practice-match counts with the attempt rule above.',
     'Write one normalized binding detection': 'Fill the target values using your contract. Compare the simplicity with the three raw rules.',
-    'Inspect grant subjects as rows': 'Compare actor and subject; identify predicates still needed for a valid grant.',
+    'Inspect grant subjects as rows': 'Compare actor and subject; identify filter expressions still needed for a valid grant.',
     'Define your SQL detection': 'Try one rule change, keeping the output keys intact. Save a copy first.',
     'Run your detection': 'Choose an alert and explain how to retrieve its individual evidence events.',
     'Inspect audit-stage deduplication': 'How would you find repeated source keys rather than just their total count?',
     'Select an alert from your rule': 'Choose an alert, keeping its asset and subject keys for the timeline below.',
-    'Read the surrounding activity': 'Select your chosen alert inside the CTE; adjust the window or row limit if needed.',
+    'Read the surrounding activity': 'Select your chosen alert inside the subquery; adjust the window or row limit if needed.',
 }
 
 HINTS = {
-    'Update the rule to successful attempts': """The shared contract defines success as `status_id = 1` (numeric, not quoted). Add that one predicate; there is no need to edit the three provider mappings again.
+    'Update the rule to successful attempts': """The shared contract defines success as `status_id = 1` (numeric, not quoted). Add that one filter expression; there is no need to edit the three provider mappings again.
 
 | Without a normalized contract | Outcome condition to add to each raw rule |
 |---|---|

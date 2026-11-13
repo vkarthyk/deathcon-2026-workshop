@@ -49,7 +49,7 @@ WHERE operation = '__TODO_OPERATION__'
 
 -- READ FIRST — 2. Update the rule to successful attempts
 --
--- What this does: A new requirement arrives: keep only successful cluster-admin binding-create attempts. Add one predicate to the normalized rule.
+-- What this does: A new requirement arrives: keep only successful cluster-admin binding-create attempts. Add one filter expression to the normalized rule.
 --
 -- What to look for: The log-day count may stay unchanged because its matching attempts are already successful. Practice matches drop from 9 to 4: failed requests and unknown HTTP outcomes are excluded; absent gRPC status maps to success in this modeled source.
 --
@@ -59,12 +59,12 @@ WHERE operation = '__TODO_OPERATION__'
 
 -- %%
 
--- TODO: Add a single status_id predicate. Compare practice-match counts with the attempt rule above.
--- A new requirement arrives: keep only successful cluster-admin binding-create attempts. Add one predicate to the normalized rule.
+-- TODO: Add a single status_id filter expression. Compare practice-match counts with the attempt rule above.
+-- A new requirement arrives: keep only successful cluster-admin binding-create attempts. Add one filter expression to the normalized rule.
 -- The log-day count may stay unchanged because its matching attempts are already successful. Practice matches drop from 9 to 4: failed requests and unknown HTTP outcomes are excluded; absent gRPC status maps to success in this modeled source.
 SELECT event_id, provider, account_uid, cluster_name, principal AS grant_actor, role
 FROM main.binding_events
 WHERE operation = 'create' AND resource_type = 'clusterrolebindings'
   AND role_kind = 'ClusterRole' AND role = 'cluster-admin'
-  -- TODO: add one normalized outcome predicate, then compare practice-match counts.
+  -- TODO: add one normalized outcome filter expression, then compare practice-match counts.
   AND __TODO_SUCCESS_FILTER__;

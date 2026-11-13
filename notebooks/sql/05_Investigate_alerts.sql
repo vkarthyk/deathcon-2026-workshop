@@ -24,7 +24,7 @@
 --
 -- What to look for: Each row links an alert and its asset/subject keys to a supporting event_id and evidence_kind. Multiple evidence rows can belong to one alert; event bodies are not selected here.
 --
--- Your next step: Choose an alert and retain its alert_key, provider, account_uid, cluster_name and subject. Add filters on these keys inside the next query’s chosen CTE to investigate it instead of the default earliest alert.
+-- Your next step: Choose an alert and retain its alert_key, provider, account_uid, cluster_name and subject. Add filters on these keys inside the next query’s chosen subquery to investigate it instead of the default earliest alert.
 --
 -- Read this cell; run the SQL cell immediately below it.
 
@@ -49,13 +49,13 @@ ORDER BY a.grant_time, e.time;
 --
 -- What to look for: Inspect up to 100 events for the grant actor or subject on the same provider/account/cluster, ordered by time and event_id, from five minutes before the grant through five minutes after last_read. The cap can omit later events.
 --
--- Your next step: Filter the chosen CTE by your alert’s key, asset and subject, or adjust the time window and row limit. If no alerts exist, the timeline is empty. Missing events do not prove an action did not happen.
+-- Your next step: Filter the chosen subquery by your alert’s key, asset and subject, or adjust the time window and row limit. If no alerts exist, the timeline is empty. Missing events do not prove an action did not happen.
 --
 -- Read this cell; run the SQL cell immediately below it.
 
 -- %%
 
--- TODO: Select your chosen alert inside the CTE; adjust the window or row limit if needed.
+-- TODO: Select your chosen alert inside the subquery; adjust the window or row limit if needed.
 -- Inspect the first alert’s actor and subject on the exact asset around the sequence.
 -- Inspect up to 100 events for the grant actor or subject on the same provider/account/cluster, ordered by time and event_id, from five minutes before the grant through five minutes after last_read. The cap can omit later events.
 WITH chosen AS (

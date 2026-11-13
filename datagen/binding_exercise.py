@@ -13,7 +13,7 @@ def raw_scaffold(cloud):
     reference = (ROOT / 'detection/simple_cluster_admin' / (cloud + '.sql')).read_text()
     projection = reference[reference.index('SELECT DISTINCT'):reference.index('\n-- ', reference.index('FROM enterprise.'))]
     return projection + """
--- TODO: replace each token with a complete SQL predicate. Open the field hints above.
+-- TODO: replace each token with a complete SQL filter expression. Open the field hints above.
 WHERE __TODO_OPERATION__
   AND __TODO_RESOURCE__
   AND __TODO_ROLE_KIND__
@@ -37,14 +37,14 @@ SUCCESS_UPDATE_SCAFFOLD = """SELECT event_id, provider, account_uid, cluster_nam
 FROM main.binding_events
 WHERE operation = 'create' AND resource_type = 'clusterrolebindings'
   AND role_kind = 'ClusterRole' AND role = 'cluster-admin'
-  -- TODO: add one normalized outcome predicate, then compare practice-match counts.
+  -- TODO: add one normalized outcome filter expression, then compare practice-match counts.
   AND __TODO_SUCCESS_FILTER__;"""
 
 
 def raw_hints(cloud):
     if cloud == 'gke':
         entries = [
-            ('OPERATION and RESOURCE', "methodName combines both. Compare `json_extract_string(entry, '$.protoPayload.methodName')` with `'io.k8s.authorization.rbac.v1.clusterrolebindings.create'`; this one predicate can cover both checks."),
+            ('OPERATION and RESOURCE', "methodName combines both. Compare `json_extract_string(entry, '$.protoPayload.methodName')` with `'io.k8s.authorization.rbac.v1.clusterrolebindings.create'`; this one filter expression can cover both checks."),
             ('ROLE_KIND', "Compare `json_extract_string(entry, '$.protoPayload.request.roleRef.kind')` with `'ClusterRole'`."),
             ('ROLE_NAME', "Compare `json_extract_string(entry, '$.protoPayload.request.roleRef.name')` with `'cluster-admin'`."),
         ]
@@ -55,7 +55,7 @@ def raw_hints(cloud):
             ('ROLE_KIND', "Compare `json_extract_string(event, '$.requestObject.roleRef.kind')` with `'ClusterRole'`."),
             ('ROLE_NAME', "Compare `json_extract_string(event, '$.requestObject.roleRef.name')` with `'cluster-admin'`."),
         ]
-    # GKE participants can repeat its method predicate in both slots; no unexplained TRUE is needed.
+    # GKE participants can repeat its method filter expression in both slots; no unexplained TRUE is needed.
     return '\n\n<details>\n<summary>Field hints for the TODOs</summary>\n\n' + '\n\n'.join(f'**{name}:** {hint}' for name, hint in entries) + '\n\n</details>'
 
 

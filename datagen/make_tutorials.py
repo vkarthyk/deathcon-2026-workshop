@@ -143,7 +143,7 @@ def raw():
         '''), code('compare(con, MY_EXEC_SQL, POD_EXEC_EKS)'),
         md('''
         A narrower query will normally show missing IDs relative to the broad baseline. That is useful
-        feedback, not a notebook failure. Remove your additional predicate to recover an exact match.
+        feedback, not a notebook failure. Remove your additional filter expression to recover an exact match.
         For the full raw exercise, open `labs/lab1_raw/01_raw_detections.ipynb`; its remaining TODO
         cells intentionally do not pass the grader until you implement them.
 

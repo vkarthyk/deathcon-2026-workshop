@@ -77,18 +77,18 @@ SELECT resource_id, category, event FROM enterprise.raw_aks LIMIT 1;
 
 -- READ FIRST — 4. Detect a cluster-admin binding in EKS
 --
--- What this does: Complete the four TODO predicate slots to detect cluster-admin ClusterRoleBinding create attempts in this source. Outcome is not filtered, so a match does not establish that the binding was created.
+-- What this does: Complete the four TODO filter expression slots to detect cluster-admin ClusterRoleBinding create attempts in this source. Outcome is not filtered, so a match does not establish that the binding was created.
 --
 -- What to look for: Unfinished tokens report Detection incomplete. Once filled, the check compares source event IDs, account/cluster scope, actors and roles, and rejects missing, unexpected or duplicate matches.
 --
--- Your next step: Use the collapsed field hints if needed; aim for three minutes per cloud. Keep the supplied output columns and complete all predicates before continuing to notebook 02.
+-- Your next step: Use the collapsed field hints if needed; aim for three minutes per cloud. Keep the supplied output columns and complete all filter expressions before continuing to notebook 02.
 --
 -- Read this cell; run the SQL cell immediately below it.
 
 -- %%
 
--- TODO: Fill every predicate token, then run the cell to check event and asset identity.
--- Complete the four TODO predicate slots to detect cluster-admin ClusterRoleBinding create attempts in this source. Outcome is not filtered, so a match does not establish that the binding was created.
+-- TODO: Fill every filter expression token, then run the cell to check event and asset identity.
+-- Complete the four TODO filter expression slots to detect cluster-admin ClusterRoleBinding create attempts in this source. Outcome is not filtered, so a match does not establish that the binding was created.
 -- Unfinished tokens report Detection incomplete. Once filled, the check compares source event IDs, account/cluster scope, actors and roles, and rejects missing, unexpected or duplicate matches.
 SELECT DISTINCT json_extract_string(event, '$.auditID') AS event_id,
        'AWS' AS provider, aws_account AS account_uid,
@@ -96,7 +96,7 @@ SELECT DISTINCT json_extract_string(event, '$.auditID') AS event_id,
        json_extract_string(event, '$.user.username') AS grant_actor,
        json_extract_string(event, '$.requestObject.roleRef.name') AS role
 FROM enterprise.raw_eks
--- TODO: replace each token with a complete SQL predicate. Open the field hints above.
+-- TODO: replace each token with a complete SQL filter expression. Open the field hints above.
 WHERE __TODO_OPERATION__
   AND __TODO_RESOURCE__
   AND __TODO_ROLE_KIND__
@@ -106,18 +106,18 @@ WHERE __TODO_OPERATION__
 
 -- READ FIRST — 5. Write the same detection for GKE
 --
--- What this does: Complete the four TODO predicate slots to detect cluster-admin ClusterRoleBinding create attempts in this source. Outcome is not filtered, so a match does not establish that the binding was created.
+-- What this does: Complete the four TODO filter expression slots to detect cluster-admin ClusterRoleBinding create attempts in this source. Outcome is not filtered, so a match does not establish that the binding was created.
 --
 -- What to look for: Unfinished tokens report Detection incomplete. Once filled, the check compares source event IDs, account/cluster scope, actors and roles, and rejects missing, unexpected or duplicate matches.
 --
--- Your next step: Use the collapsed field hints if needed; aim for three minutes per cloud. Keep the supplied output columns and complete all predicates before continuing to notebook 02.
+-- Your next step: Use the collapsed field hints if needed; aim for three minutes per cloud. Keep the supplied output columns and complete all filter expressions before continuing to notebook 02.
 --
 -- Read this cell; run the SQL cell immediately below it.
 
 -- %%
 
--- TODO: Complete the GKE attempt predicates. The method check can fill both operation/resource slots; outcome is not filtered here.
--- Complete the four TODO predicate slots to detect cluster-admin ClusterRoleBinding create attempts in this source. Outcome is not filtered, so a match does not establish that the binding was created.
+-- TODO: Complete the GKE attempt filter expressions. The method check can fill both operation/resource slots; outcome is not filtered here.
+-- Complete the four TODO filter expression slots to detect cluster-admin ClusterRoleBinding create attempts in this source. Outcome is not filtered, so a match does not establish that the binding was created.
 -- Unfinished tokens report Detection incomplete. Once filled, the check compares source event IDs, account/cluster scope, actors and roles, and rejects missing, unexpected or duplicate matches.
 SELECT DISTINCT json_extract_string(entry, '$.operation.id') AS event_id,
        'GCP' AS provider,
@@ -126,7 +126,7 @@ SELECT DISTINCT json_extract_string(entry, '$.operation.id') AS event_id,
        json_extract_string(entry, '$.protoPayload.authenticationInfo.principalEmail') AS grant_actor,
        json_extract_string(entry, '$.protoPayload.request.roleRef.name') AS role
 FROM enterprise.raw_gke
--- TODO: replace each token with a complete SQL predicate. Open the field hints above.
+-- TODO: replace each token with a complete SQL filter expression. Open the field hints above.
 WHERE __TODO_OPERATION__
   AND __TODO_RESOURCE__
   AND __TODO_ROLE_KIND__
@@ -136,18 +136,18 @@ WHERE __TODO_OPERATION__
 
 -- READ FIRST — 6. Write the same detection for AKS
 --
--- What this does: Complete the four TODO predicate slots to detect cluster-admin ClusterRoleBinding create attempts in this source. Outcome is not filtered, so a match does not establish that the binding was created.
+-- What this does: Complete the four TODO filter expression slots to detect cluster-admin ClusterRoleBinding create attempts in this source. Outcome is not filtered, so a match does not establish that the binding was created.
 --
 -- What to look for: Unfinished tokens report Detection incomplete. Once filled, the check compares source event IDs, account/cluster scope, actors and roles, and rejects missing, unexpected or duplicate matches.
 --
--- Your next step: Use the collapsed field hints if needed; aim for three minutes per cloud. Keep the supplied output columns and complete all predicates before continuing to notebook 02.
+-- Your next step: Use the collapsed field hints if needed; aim for three minutes per cloud. Keep the supplied output columns and complete all filter expressions before continuing to notebook 02.
 --
 -- Read this cell; run the SQL cell immediately below it.
 
 -- %%
 
--- TODO: Complete the AKS predicates. Reuse EKS logic where the native fields agree.
--- Complete the four TODO predicate slots to detect cluster-admin ClusterRoleBinding create attempts in this source. Outcome is not filtered, so a match does not establish that the binding was created.
+-- TODO: Complete the AKS filter expressions. Reuse EKS logic where the native fields agree.
+-- Complete the four TODO filter expression slots to detect cluster-admin ClusterRoleBinding create attempts in this source. Outcome is not filtered, so a match does not establish that the binding was created.
 -- Unfinished tokens report Detection incomplete. Once filled, the check compares source event IDs, account/cluster scope, actors and roles, and rejects missing, unexpected or duplicate matches.
 SELECT DISTINCT json_extract_string(event, '$.auditID') AS event_id,
        'Azure' AS provider,
@@ -156,7 +156,7 @@ SELECT DISTINCT json_extract_string(event, '$.auditID') AS event_id,
        json_extract_string(event, '$.user.username') AS grant_actor,
        json_extract_string(event, '$.requestObject.roleRef.name') AS role
 FROM enterprise.raw_aks
--- TODO: replace each token with a complete SQL predicate. Open the field hints above.
+-- TODO: replace each token with a complete SQL filter expression. Open the field hints above.
 WHERE __TODO_OPERATION__
   AND __TODO_RESOURCE__
   AND __TODO_ROLE_KIND__
